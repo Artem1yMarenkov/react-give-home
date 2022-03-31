@@ -1,93 +1,68 @@
 import { useState } from "react";
-import Input from "../Input/Input";
-import validator from 'validator';
-import { Button } from "@mui/material";
+import { Button, TextField } from "@mui/material";
+
+import useValidate from "../../hooks/useVlidate";
 
 import './Form.scss';
-import userIcon from '../../img/user.svg';
-import mailIcon from '../../img/mail.svg';
-import lockIcon from '../../img/lock.svg';
 
 export default function SignUpForm({onLoading}) {
     const [login, setLogin] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState("error");
-    // const [readyToSend, setReadyToSend] = useState(false);
-    
-    const validate = () => {
-        if (validator.isEmpty(login, {min: 3, max: 100})) {
-            return setError("login");
-        }
-        
-        if (!validator.isEmail(email)) {
-            return setError("email");
-        }
-        
-        if (validator.isEmpty(password, {min: 8, max: 20})) {
-            return setError("password");
-        }
+    const [error, setError] = useState();
 
-        return setError(null);
-    }
+    const validate = useValidate(setError);
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        validate();
-
-        !error && sendData();
-    }
-
+    /* TODO: REWRITE TO REDUX */
     const sendData = data => {
         onLoading(true);
-        setTimeout(() => {
-            onLoading(false);
-        }, 1000);
+        setTimeout(() => onLoading(false), 1000);
     };
 
-    const handleChange = (event) => {
-        const name = event.target.name;
-        const value = event.target.value;
+    // Event Handlers
+    const handleLogin = e => setLogin(e.target.value);
+    const handleEmail = e => setEmail(e.target.value);
+    const handlePassword = e => setPassword(e.target.value);
 
-        switch (name) {
-            case 'login':
-                return setLogin(value);
-            case 'email': 
-                return setEmail(value);
-            case 'password':
-                return setPassword(value);
-            default:
-                break;
-        }
+    const handleSubmit = event => {
+        event.preventDefault();
+        validate({login, email, password});
+        console.log(error);
+
+        !error && sendData();
     }
 
     return (
         <form className="form" onSubmit={handleSubmit} >
             <h2 className="form__header">Регистрация</h2>
-            <Input 
-                img={userIcon} 
-                placeholder="Логин" 
-                onChange={handleChange}
+            <TextField 
+                className="form__input"
+                label="Логин" 
                 name="login"
+                variant="outlined"
+                onChange={handleLogin}
             />
             { error == "login" && <p className="form__danger">Длина логина должна быть от 3 до 100 символов</p> }
-            <Input 
-                img={mailIcon} 
-                placeholder="Почта" 
-                onChange={handleChange}
+            <TextField 
+                className="form__input"
+                label="Почта" 
+                variant="outlined" 
                 name="email"
+                onChange={handleEmail}
             />
             { error == "email" && <p className="form__danger">Введите почту</p> }
-            <Input 
-                img={lockIcon} 
-                placeholder="Пароль" 
-                onChange={handleChange}
+            <TextField 
+                className="form__input"
+                label="Пароль" 
+                variant="outlined" 
                 name="password"
                 type="password"
+                onChange={handlePassword}
             />
             { error == "password" && <p className="form__danger">Длина пароля должна быть от 8 до 20 символов</p> }
             <Button 
                 variant="outlined"
+                type="submit"
             >Зарегистрироваться</Button>
         </form>
     );
