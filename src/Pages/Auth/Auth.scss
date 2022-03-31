@@ -1,0 +1,40 @@
+.auth {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (max-width: 900px) {
+        width: 100vw;
+        height: 100% !important;
+    }
+
+    &__image {
+        width: 50vw;
+        height: 100vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        
+        @media (max-width: 900px) {
+            display: none;    
+        }
+    }
+
+    &__form {
+        width: 50vw;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        @media (max-width: 900px) {
+            width: 100vw;
+        }
+
+        &__logo {
+            width: 360px;
+        }
+    }
+}

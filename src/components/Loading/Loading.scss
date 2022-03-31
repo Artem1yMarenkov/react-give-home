@@ -1,0 +1,36 @@
+@import '../../vars/colors.scss';
+
+.loading {
+    &__wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        width: 100vw;
+        height: 100vh;
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: rgba(255, 255, 255, 0.5);
+    }
+
+    &__circle {
+        width: 7vw;
+        height: 7vw;
+        border: 2px solid $accent;
+        border-top-left-radius: 110px;
+        border-top-right-radius: 110px;
+        border-radius: 1000px;
+        border-bottom: 2px solid transparent;
+        border-left: 2px solid transparent;
+        animation: rotate .8s infinite;
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(360deg);
+            }
+        }
+    }
+}

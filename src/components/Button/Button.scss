@@ -1,0 +1,21 @@
+@import '../../vars/colors';
+
+.button {
+    width: 100%;
+    transition: .1s;
+    border: 1px solid $accent;
+    outline: none;
+    color: $accent;
+    background: white;
+    border-radius: 5px;
+    padding: 15px;
+    font-size: 18px;
+
+    &:hover {
+        background: $accentHover;
+    }
+
+    &:active {
+        background: $accentActive;
+    }
+}
