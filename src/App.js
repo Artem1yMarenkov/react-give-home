@@ -11,7 +11,6 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem('token');
     !token && navigate('/auth');
-    return undefined;
   }, []);
 
   return (

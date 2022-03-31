@@ -19,7 +19,13 @@
         color: red;
     }
 
+    &__input {
+        width: 100%;
+        margin-bottom: 20px !important;
+    }
+
     button {
         width: 100%;
+        height: 50px;
     }
 }

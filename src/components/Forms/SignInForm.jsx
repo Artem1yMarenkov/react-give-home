@@ -1,12 +1,9 @@
 import { useState } from "react";
-import Button from "../Button/Button";
-import Input from "../Input/Input";
+
+import { Button, TextField } from "@mui/material";
 import validator from 'validator';
 
 import './Form.scss';
-import userIcon from '../../img/user.svg';
-import mailIcon from '../../img/mail.svg';
-import lockIcon from '../../img/lock.svg';
 
 export default function SignInForm() {
     const [login, setLogin] = useState();
@@ -32,26 +29,32 @@ export default function SignInForm() {
             case 'password':
                 valid = validator.isLength(value, {min: 3, max: 100});
                 break;
+            default:
+                break;
         }
     }
 
     return (
         <form className="form" onSubmit={handleSubmit}>
             <h2 className="form__header">Войти</h2>
-            <Input 
-                img={userIcon} 
-                placeholder="Логин" 
-                onChange={handleChange}
+            <TextField 
+                className="form__input"
+                label="Логин" 
                 name="login"
-            />
-            <Input 
-                img={lockIcon} 
-                placeholder="Пароль" 
+                variant="outlined"
                 onChange={handleChange}
+            />
+            <TextField 
+                className="form__input"
+                label="Пароль" 
+                variant="outlined" 
                 name="password"
                 type="password"
+                onChange={handleChange}
             />
-            <Button value="Зарегистрироваться"/>
+            <Button 
+                variant="outlined"
+            >Войти</Button>
         </form>
     );
 }
