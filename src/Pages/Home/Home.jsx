@@ -25,7 +25,6 @@ export default function Home() {
         'Мои объявления': <MyAds />
     }
     return (
-        <>
         <ThemeProvider theme={theme}>
             <div className="wrapper">
                 <header>
@@ -49,6 +48,5 @@ export default function Home() {
                 </section>
             </div>
         </ThemeProvider>
-        </>
     );
 }
