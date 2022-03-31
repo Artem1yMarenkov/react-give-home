@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, TextField } from "@mui/material";
 
 import useValidate from "../../hooks/useVlidate";
@@ -9,7 +9,7 @@ export default function SignUpForm({onLoading}) {
     const [login, setLogin] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState();
+    const [error, setError] = useState("error");
 
     const validate = useValidate(setError);
 
@@ -18,6 +18,11 @@ export default function SignUpForm({onLoading}) {
         onLoading(true);
         setTimeout(() => onLoading(false), 1000);
     };
+    
+    useEffect(() => {
+        console.log(error);
+        !error && sendData();
+    }, [error]);
 
     // Event Handlers
     const handleLogin = e => setLogin(e.target.value);
@@ -27,9 +32,6 @@ export default function SignUpForm({onLoading}) {
     const handleSubmit = event => {
         event.preventDefault();
         validate({login, email, password});
-        console.log(error);
-
-        !error && sendData();
     }
 
     return (
