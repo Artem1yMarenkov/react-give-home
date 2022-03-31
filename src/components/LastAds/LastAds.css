@@ -1,0 +1,15 @@
+.dog {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #FCFCFC;
+    border-radius: 20px;
+}
+.dog img {
+    margin-right: 40px;
+    width: 260px;
+    height: 260px;
+    background: #F5F5F5;
+    border-radius: 20px;
+}
