@@ -22,8 +22,7 @@ const useValidate = onInvalid => elements => {
         }
     });
 
-
-    return errors.length > 0 ? onInvalid(errors[0]) : onInvalid(null);
+    errors.length > 0 ? onInvalid(errors[0]) : onInvalid(null)
 }
 
 export default useValidate;
