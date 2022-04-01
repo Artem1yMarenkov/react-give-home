@@ -15,7 +15,11 @@
 }
 .tabs:hover {
     transition: 0.4s;
-    background-color: #d87f8015;
+    background-color: #ff494915;
+}
+.tabs:active {
+    transition: 0.1s;
+    background-color: #ff494935;
 }
 .active-tabs {
     background-color:  #ffffff;

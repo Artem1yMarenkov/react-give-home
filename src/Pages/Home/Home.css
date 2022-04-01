@@ -20,7 +20,40 @@ header img {
     height: 28px;
 }
 
+.catalog {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
 .catalog-interactive__button {
     width: 100%;
     height: 50px;
+}
+.header__button {
+    transition: 0.3s;
+    cursor: pointer;
+    border: 1px solid #FF4949;
+    box-sizing: border-box;
+    border-radius: 5px;
+    width: 199px;
+    height: 50px;
+    background-color: white;
+}
+.catalog-interactive__button {
+    transition: 0.3s;
+    cursor: pointer;
+    border: 1px solid #FF4949;
+    box-sizing: border-box;
+    border-radius: 5px;
+    width: 100%;
+    height: 60px;
+    background-color: white;
+}
+.header__button:hover, .catalog-interactive__button:hover{
+    transition: 0.3s;
+    background-color: #ff494915;
+}
+.header__button:active, .catalog-interactive__button:active{
+    transition: 0.1s;
+    background-color: #ff494935;
 }
