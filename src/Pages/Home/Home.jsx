@@ -13,7 +13,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     secondary: {
-      main: '#969696',
+      main: '#FF4949',
     },
   },
 });
@@ -29,7 +29,7 @@ export default function Home() {
             <div className="wrapper">
                 <header>
                     <img src={logo}></img>
-                    <Button sx={{ color: 'white', }} color="secondary" className="header__button" variant="contained">Выйти</Button>
+                    <Button color="secondary" className="header__button" variant="outlined">Выйти</Button>
                 </header>
                 <section className="catalog">
                     <Grid container spacing={2}>
