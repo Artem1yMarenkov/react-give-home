@@ -2,9 +2,12 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import Auth from './Pages/Auth/Auth';
 import Home from './Pages/Home/Home';
+import AddNew from './Pages/AddNew/AddNew'
 import NoMatch from './Pages/NoMatch/NoMatch';
 
 import './App.scss';
+
+localStorage.setItem('token', '00')
 
 function App() {
   const navigate = useNavigate();
@@ -20,6 +23,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="auth" element={<Auth/>} />
+          <Route path="addnew" element={<AddNew/>} />
           <Route path="*" element={<NoMatch/>} />
         </Routes>
       </section>
