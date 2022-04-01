@@ -9,10 +9,16 @@
     padding: 0 20px;
 }
 .tabs {
-    background-color: #FBFBFB;
+    transition: 0.4s;
+    cursor: pointer;
+    background-color: #FFFFFF;
+}
+.tabs:hover {
+    transition: 0.4s;
+    background-color: #d87f8015;
 }
 .active-tabs {
-    background-color:  #F5F5F5;
+    background-color:  #ffffff;
 }
 .active-tabs::before {
     content: "";
@@ -21,7 +27,7 @@
     width: 100%;
     height: 2%;
     left: 0;
-    background-color: black;
+    background-color: #FF4949;
 }
 .dog__date {
     color: #B6B6B6;
