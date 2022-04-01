@@ -4,14 +4,12 @@ import Auth from './Pages/Auth/Auth';
 import Home from './Pages/Home/Home';
 import AddNew from './Pages/AddNew/AddNew'
 import NoMatch from './Pages/NoMatch/NoMatch';
-
 import './App.scss';
 
 localStorage.setItem('token', '00')
 
 function App() {
   const navigate = useNavigate();
-
   // Check Authenticition
   useEffect(() => {
     const token = localStorage.getItem('token');

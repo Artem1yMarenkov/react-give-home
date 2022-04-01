@@ -1,0 +1,35 @@
+.catalog-tabs {
+    display: flex;
+    flex-direction: row;
+}
+.catalog-tab button{
+    position: relative;
+    border: 0;
+    font-size: 20px;
+    padding: 0 20px;
+}
+.tabs {
+    background-color: #FBFBFB;
+}
+.active-tabs {
+    background-color:  #F5F5F5;
+}
+.active-tabs::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2%;
+    left: 0;
+    background-color: black;
+}
+.dog__date {
+    color: #B6B6B6;
+    font-size: 14px;
+}
+.dog__phone {
+    font-size: 16px;
+}
+.dog__adress {
+    font-size: 16px;
+}

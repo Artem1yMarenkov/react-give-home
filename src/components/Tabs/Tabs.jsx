@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import "./Tabs.css"
 
 export default function TabPanel({tabs}) {
     const [activeTab, setActiveTab] = useState(Object.keys(tabs)[0]);
@@ -13,7 +13,7 @@ export default function TabPanel({tabs}) {
 
         return tabNames.map((element,index) => {
             return (
-                <div key={index} className="catalog-tabs">
+                <div key={index} className="catalog-tab">
                     <button 
                         className={activeTab == element ? "tabs active-tabs" : "tabs"}
                         onClick={toggleTab}

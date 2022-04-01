@@ -3,6 +3,11 @@
     margin: 0 auto;
 }
 
+.catalog {
+    margin-top: 50px;
+}
+
+
 header {
     height: 80px;
     display: flex;
@@ -17,4 +22,8 @@ header img {
 .header__button {
     width: 200px;
     height: 50px;
+}
+.catalog-interactive__button {
+    width: 270px;
+    height: 60px;
 }
