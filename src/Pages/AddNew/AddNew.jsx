@@ -18,8 +18,8 @@ export default function AddNew() {
         <ThemeProvider theme={theme}>
         <div className="wrapper">
         <header>
-                <img src={logo}></img>
-                <Button sx={{ color: 'white', }} color="secondary" className="header__button" variant="contained">Выйти</Button>
+            <img src={logo}></img>
+            <button color="secondary" className="header__button" variant="outlined">Выйти</button>
         </header>
         <div className='wrapper__div'>Добавление записи</div>
         <div className='wrapper__main'>
