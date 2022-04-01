@@ -1,14 +1,26 @@
 import { ClassNames } from '@emotion/react';
 import logo from '../../../src/img/logo.svg'
 import './AddNew.css'
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Button } from "@mui/material";
+
+const theme = createTheme({
+    palette: {
+      secondary: {
+        main: '#969696',
+      },
+    },
+  });
 
 export default function AddNew() {
     return (
         <>
-        <div className='wrapper__header'>
-            <img className='img' src={logo} alt={'logo'}></img>
-            <button className='wrapper__button-quit'>Выйти</button>
-        </div>
+        <ThemeProvider theme={theme}>
+        <div className="wrapper">
+        <header>
+                <img src={logo}></img>
+                <Button sx={{ color: 'white', }} color="secondary" className="header__button" variant="contained">Выйти</Button>
+        </header>
         <div className='wrapper__div'>Добавление записи</div>
         <div className='wrapper__main'>
             
@@ -31,8 +43,8 @@ export default function AddNew() {
             </div>
         </div>
         
-        
-       
+        </div>
+        </ThemeProvider>
         </>
     );
 }

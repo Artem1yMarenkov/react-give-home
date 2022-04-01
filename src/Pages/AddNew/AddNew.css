@@ -1,20 +1,6 @@
-.img{
-    width: 158px;
-    height: 23px;
-    margin-top: 28px;
-    margin-left: 416px;
-}
-
-.wrapper__header {
-    display: flex;
-    flex-direction: row;
-    justify-content:space-between;
-    width: 1920px;
-    height: 80px;
-}
-
-.img {
-    margin-left: 375px;
+.wrapper {
+    width: 1170px;
+    margin: 0 auto;
 }
 
 .wrapper__button-quit{
@@ -61,9 +47,11 @@
     width: 270px;
     height: 270px;
     margin-top: 50px;
-    margin-left: 375px;
     background-color: #FCFCFC;
     border-radius: 20px;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
 }
 
 .wrapper__photo_input_text {
