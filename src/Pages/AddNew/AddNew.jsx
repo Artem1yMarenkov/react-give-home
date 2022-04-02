@@ -7,7 +7,7 @@ export default function AddNew() {
         <div className="wrapper">
             <header>
               <img src={logo}></img>
-              <button className="header__button">Выйти</button>
+              <button className="wrapper__button-quit">Выйти</button>
             </header>
             <div className='wrapper__div'>Добавление записи</div>
               <div className='wrapper__main'>
@@ -35,7 +35,7 @@ export default function AddNew() {
                   <div className='wrapper__div5'>Адрес электронной почты</div>
                   <input className='wrapper__div4' placeholder='Введите что-то там'></input>
                   <div >
-                    <button className='catalog-interactive__button'>Сохранить</button>
+                    <button className='wrapper__button-save'>Сохранить</button>
                   </div>
                 </div>    
               </div>

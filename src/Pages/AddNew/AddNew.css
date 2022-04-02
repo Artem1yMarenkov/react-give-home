@@ -3,7 +3,7 @@
     margin: 0 auto;
 }
 
-.header__button {
+.wrapper__button-quit {
     transition: 0.3s;
     cursor: pointer;
     border: 1px solid #FF4949;
@@ -14,11 +14,11 @@
     background-color: white;
 }
 
-.header__button:hover, .catalog-interactive__button:hover{
+.wrapper__button-quit:hover, .wrapper__button-save:hover{
     transition: 0.3s;
     background-color: #ff494915;
 }
-.header__button:active, .catalog-interactive__button:active{
+.wrapper__button-quit:active, .wrapper__button-save:active{
     transition: 0.1s;
     background-color: #ff494935;
 }
@@ -63,6 +63,7 @@
     width: 440px;
     height: 149px;
     margin-top: 15px;
+    padding-top: 19px;
     border: 1px solid #E8E8E8;
     border-radius: 5px;
     padding-left: 30px;
@@ -93,7 +94,6 @@
 }
 
 textarea::placeholder {
-    padding-top: 19px;
     font-size: 18px;
 }
 
@@ -108,7 +108,7 @@ textarea::placeholder {
     padding: 113px 64px;
 }
 
-.catalog-interactive__button {
+.wrapper__button-save {
     display: inline-block;
     width: 270px;
     height: 60px;
