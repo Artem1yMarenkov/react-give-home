@@ -3,14 +3,24 @@
     margin: 0 auto;
 }
 
-.wrapper__button-quit{
-    margin-top: 28px;
-    margin-right: 376px;
-    background-color: #969696;
-    padding: 15px 72px;
-    border-radius: 11px;
-    color: white;
-    border: none;
+.header__button {
+    transition: 0.3s;
+    cursor: pointer;
+    border: 1px solid #FF4949;
+    box-sizing: border-box;
+    border-radius: 5px;
+    width: 199px;
+    height: 50px;
+    background-color: white;
+}
+
+.header__button:hover, .catalog-interactive__button:hover{
+    transition: 0.3s;
+    background-color: #ff494915;
+}
+.header__button:active, .catalog-interactive__button:active{
+    transition: 0.1s;
+    background-color: #ff494935;
 }
 
 .wrapper__div {
@@ -43,31 +53,6 @@
     padding-left: 30px;
 }
 
-.wrapper__photo {
-    width: 270px;
-    height: 270px;
-    margin-top: 50px;
-    background-color: #FCFCFC;
-    border-radius: 20px;
-    
-}
-
-.wrapper__photo_input_text {
-    width: 143px;
-    height: 44px;
-    font-size: 18px;
-    margin: 113px 63px;
-}
-.wrapper__main {
-    display: flex;
-    flex-direction: row;
-    justify-content:left;
-}
-
-.wrapper__description {
-    margin-left: 60px;
-}
-
 .wrapper__div5 {
     margin-top: 15px;
     font-weight: 500;
@@ -89,17 +74,22 @@
     margin-top: 60px;
 }
 
-.wrapper__button-save {
-    display: inline-block;
+.wrapper__photo {
     width: 270px;
-    height: 60px;
-    margin-top: 60px;
-    margin-bottom: 100px;
-    background-color: #969696;;
-    border-radius: 20px;
-    color: white;
-    border: none;
-    font-size: 16px;
+    height: 270px;
+    margin-top: 50px;
+    background-color: #FCFCFC;
+    border-radius: 20px;   
+}
+
+.wrapper__main {
+    display: flex;
+    flex-direction: row;
+    justify-content:left;
+}
+
+.wrapper__description {
+    margin-left: 60px;
 }
 
 textarea::placeholder {
@@ -116,4 +106,20 @@ textarea::placeholder {
 
 .title {
     padding: 113px 64px;
+}
+
+.catalog-interactive__button {
+    display: inline-block;
+    width: 270px;
+    height: 60px;
+    margin-top: 60px;
+    margin-bottom: 100px;
+    transition: 0.3s;
+    cursor: pointer;
+    border: 1px solid #FF4949;
+    box-sizing: border-box;
+    border-radius: 5px;
+    width: 100%;
+    height: 60px;
+    background-color: white;
 }
