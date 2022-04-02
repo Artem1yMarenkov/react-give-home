@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import dogPhoto from "../../img/sobaka.jpg"
 import './MyAds.css'
 export default function MyAds() {
+    // А зачем второй абсолютно такой же компонент?
     const dogs = [
         { phone: '03005988', name: 'Joseph', date: 32, adress: 'm' },
         { phone: '03005988', name: 'SlimShady', date: 16, adress: 'z' },

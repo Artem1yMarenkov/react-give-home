@@ -8,6 +8,7 @@ export default function TabPanel({tabs}) {
         setActiveTab(event.target.textContent);
     };
 
+    // АПЯТЬ УКРАЛИ МОЙ ГОВНОКОД!!!1!
     const MapedToggles = () => {
         const tabNames = Object.keys(tabs);
 
