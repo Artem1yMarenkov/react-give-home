@@ -15,7 +15,7 @@
 
 .wrapper__div {
     margin-top: 60px;
-    margin-left: 375px;
+    /* margin-left: 375px; */
     font-size: 40px;
     font-weight: 400;
 }
@@ -49,9 +49,7 @@
     margin-top: 50px;
     background-color: #FCFCFC;
     border-radius: 20px;
-    /* display: flex; */
-    /* align-items: center; */
-    /* justify-content: center; */
+    
 }
 
 .wrapper__photo_input_text {
@@ -70,8 +68,6 @@
     margin-left: 60px;
 }
 
-
-
 .wrapper__div5 {
     margin-top: 15px;
     font-weight: 500;
@@ -84,7 +80,6 @@
     margin-top: 15px;
     border: 1px solid #E8E8E8;
     border-radius: 5px;
-    /* padding-top: 19px; */
     padding-left: 30px;
 }
 
@@ -95,11 +90,30 @@
 }
 
 .wrapper__button-save {
+    display: inline-block;
     width: 270px;
     height: 60px;
     margin-top: 60px;
+    margin-bottom: 100px;
     background-color: #969696;;
     border-radius: 20px;
     color: white;
     border: none;
+    font-size: 16px;
+}
+
+textarea::placeholder {
+    padding-top: 19px;
+    font-size: 18px;
+}
+
+.example-1 input[type=file]{outline:0;opacity:0;pointer-events:none;user-select:none}
+.example-1 .label{width:270px; height:270px; border:2px dashed grey;border-radius:5px;display:block;transition:border 300ms ease;cursor:pointer;text-align:center}
+.example-1 .label i{display:block;font-size:42px;padding-bottom:16px}
+.example-1 .label i,.example-1 .label .title{color:grey;transition:200ms color}
+.example-1 .label:hover{border:2px solid #000}
+.example-1 .label:hover i,.example-1 .label:hover .title{color:#000}
+
+.title {
+    padding: 113px 64px;
 }
