@@ -19,7 +19,7 @@ export default function LastAds() {
                     <p className="dog__date">Дата публицации: {element.date}</p>
                     <p className="dog__phone">{element.phone}</p>
                     <p className="dog__adress">{element.adress}</p>
-                   
+                    <Link className="dog__link" to='/addnew'>Узнать подробнее</Link>
                 </div>
             </div>
         );

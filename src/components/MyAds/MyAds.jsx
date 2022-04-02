@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import dogPhoto from "../../img/sobaka.jpg"
-
+import './MyAds.css'
 export default function MyAds() {
     const dogs = [
         { phone: '03005988', name: 'Joseph', date: 32, adress: 'm' },
@@ -16,8 +16,10 @@ export default function MyAds() {
                 <div className="dog-data">
                     <h2 className="dog__name">{element.name}</h2>
                     <p className="dog__date">Дата публицации: {element.date}</p>
-                    <p className="dog__phone">{element.phone}</p>
-                    <p className="dog__adress">{element.adress}</p>
+                    <div className="dog-data-interactive">
+                        <Link to={'/addnew'} className="dog__change">Редактировать</Link>
+                        <p className="dog__delete">Удалить</p>
+                    </div>
                 </div>
             </div>
         );

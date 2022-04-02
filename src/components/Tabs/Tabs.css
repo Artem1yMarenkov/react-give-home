@@ -1,6 +1,8 @@
 .catalog-tabs {
     display: flex;
     flex-direction: row;
+    width: 57.6%;
+    box-shadow: 0 0 10px #f0f0f0;
 }
 .catalog-tab button{
     position: relative;
@@ -18,11 +20,11 @@
     background-color: #ff494915;
 }
 .tabs:active {
-    transition: 0.1s;
+    transition: 0.2s;
     background-color: #ff494935;
 }
 .active-tabs {
-    background-color:  #ffffff;
+    background-color: #ff494915;
 }
 .active-tabs::before {
     content: "";

@@ -1,0 +1,31 @@
+.dog-data-interactive {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 30px;
+}
+.dog__change {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    background: url(../../img/settings.svg) no-repeat center left;
+    font-size: 16px;
+    padding-left: 30px;
+    height: 30px;
+    margin-right: 30px;
+}
+.dog__change:hover {
+    color: black;
+}
+.dog__delete {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url(../../img/delete.svg) no-repeat center left;
+    font-size: 16px;
+    padding-left: 30px;
+    line-height: 30px;
+}
