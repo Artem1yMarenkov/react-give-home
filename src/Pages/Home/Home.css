@@ -21,7 +21,6 @@ header img {
 }
 
 .catalog {
-    transition: 1s;
     display: grid;
     grid-template-columns: 3fr 1fr;
 }
