@@ -6,8 +6,6 @@ import AddNew from './Pages/AddNew/AddNew'
 import NoMatch from './Pages/NoMatch/NoMatch';
 import './App.scss';
 
-localStorage.setItem('token', '00')
-
 function App() {
   const navigate = useNavigate();
   // Check Authenticition
