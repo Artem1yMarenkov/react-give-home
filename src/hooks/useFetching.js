@@ -1,3 +1,3 @@
 export default function useFetching(data, options) {
-    return async function() {}
+  return async function () {}
 }

@@ -1,125 +1,155 @@
 .wrapper {
-    width: 1170px;
-    margin: 0 auto;
+  width: 1170px;
+  margin: 0 auto;
 }
 
 .wrapper__button-quit {
-    transition: 0.3s;
-    cursor: pointer;
-    border: 1px solid #FF4949;
-    box-sizing: border-box;
-    border-radius: 5px;
-    width: 199px;
-    height: 50px;
-    background-color: white;
+  transition: 0.3s;
+  cursor: pointer;
+  border: 1px solid #ff4949;
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 199px;
+  height: 50px;
+  background-color: white;
 }
 
-.wrapper__button-quit:hover, .wrapper__button-save:hover{
-    transition: 0.3s;
-    background-color: #ff494915;
+.wrapper__button-quit:hover,
+.wrapper__button-save:hover {
+  transition: 0.3s;
+  background-color: #ff494915;
 }
-.wrapper__button-quit:active, .wrapper__button-save:active{
-    transition: 0.1s;
-    background-color: #ff494935;
+.wrapper__button-quit:active,
+.wrapper__button-save:active {
+  transition: 0.1s;
+  background-color: #ff494935;
 }
 
 .wrapper__div {
-    margin-top: 60px;
-    /* margin-left: 375px; */
-    font-size: 40px;
-    font-weight: 400;
+  margin-top: 60px;
+  /* margin-left: 375px; */
+  font-size: 40px;
+  font-weight: 400;
 }
 
 .wrapper__div2 {
-    margin-top: 50px;
-    font-size: 32px;
+  margin-top: 50px;
+  font-size: 32px;
 }
 
 .wrapper__div3 {
-    margin-top: 30px;
-    font-size: 20px;
-    font-weight: 500;
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .wrapper__div4 {
-    width: 440px;
-    height: 60px;
-    font-size: 18px;
-    border: 1px solid #E8E8E8;
-    border-radius: 5px;
-    margin-top: 15px;
-    padding-top: 19px;
-    padding-bottom: 19px;
-    padding-left: 30px;
+  width: 440px;
+  height: 60px;
+  font-size: 18px;
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+  margin-top: 15px;
+  padding-top: 19px;
+  padding-bottom: 19px;
+  padding-left: 30px;
 }
 
 .wrapper__div5 {
-    margin-top: 15px;
-    font-weight: 500;
-    font-size: 20px;  
+  margin-top: 15px;
+  font-weight: 500;
+  font-size: 20px;
 }
 
 .wrapper__div6 {
-    width: 440px;
-    height: 149px;
-    margin-top: 15px;
-    padding-top: 19px;
-    border: 1px solid #E8E8E8;
-    border-radius: 5px;
-    padding-left: 30px;
+  width: 440px;
+  height: 149px;
+  margin-top: 15px;
+  padding-top: 19px;
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+  padding-left: 30px;
+  font-size: 18px;
 }
 
 .wrapper__div7 {
-    font-weight: 400;
-    font-size: 32px;
-    margin-top: 60px;
+  font-weight: 400;
+  font-size: 32px;
+  margin-top: 60px;
 }
 
 .wrapper__photo {
-    width: 270px;
-    height: 270px;
-    margin-top: 50px;
-    background-color: #FCFCFC;
-    border-radius: 20px;   
+  width: 270px;
+  height: 270px;
+  margin-top: 50px;
+  background-color: #fcfcfc;
+  border-radius: 20px;
 }
 
 .wrapper__main {
-    display: flex;
-    flex-direction: row;
-    justify-content:left;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
 }
 
 .wrapper__description {
-    margin-left: 60px;
+  margin-left: 60px;
 }
 
 textarea::placeholder {
-    font-size: 18px;
+  font-size: 18px;
 }
 
-.example-1 input[type=file]{outline:0;opacity:0;pointer-events:none;user-select:none}
-.example-1 .label{width:270px; height:270px; border:2px dashed grey;border-radius:5px;display:block;transition:border 300ms ease;cursor:pointer;text-align:center}
-.example-1 .label i{display:block;font-size:42px;padding-bottom:16px}
-.example-1 .label i,.example-1 .label .title{color:grey;transition:200ms color}
-.example-1 .label:hover{border:2px solid #000}
-.example-1 .label:hover i,.example-1 .label:hover .title{color:#000}
+.example-1 input[type='file'] {
+  outline: 0;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+}
+.example-1 .label {
+  width: 270px;
+  height: 270px;
+  border: 2px dashed grey;
+  border-radius: 5px;
+  display: block;
+  transition: border 300ms ease;
+  cursor: pointer;
+  text-align: center;
+}
+.example-1 .label i {
+  display: block;
+  font-size: 42px;
+  padding-bottom: 16px;
+}
+.example-1 .label i,
+.example-1 .label .title {
+  color: grey;
+  transition: 200ms color;
+}
+.example-1 .label:hover {
+  border: 2px solid #000;
+}
+.example-1 .label:hover i,
+.example-1 .label:hover .title {
+  color: #000;
+}
 
 .title {
-    padding: 113px 64px;
+  padding: 113px 64px;
 }
 
 .wrapper__button-save {
-    display: inline-block;
-    width: 270px;
-    height: 60px;
-    margin-top: 60px;
-    margin-bottom: 100px;
-    transition: 0.3s;
-    cursor: pointer;
-    border: 1px solid #FF4949;
-    box-sizing: border-box;
-    border-radius: 5px;
-    width: 100%;
-    height: 60px;
-    background-color: white;
+  display: inline-block;
+  width: 270px;
+  height: 60px;
+  margin-top: 60px;
+  margin-bottom: 100px;
+  transition: 0.3s;
+  cursor: pointer;
+  border: 1px solid #ff4949;
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 100%;
+  height: 60px;
+  background-color: white;
 }
