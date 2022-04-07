@@ -2,10 +2,18 @@ import logo from '../../../src/img/logo.svg'
 import './AddNew.css'
 import { useEffect, useState } from 'react'
 
+const ERRORS = {
+  MIN_LENGTH: 'Некорректная длина',
+  IS_EMPTY: 'Поле не должно быть пустым',
+  EMAIL: 'Некорректная почта',
+  ALL: 'Неправильно заполнены данные',
+}
+
 const useValidation = (value, validations) => {
   const [isEmpty, setEmpty] = useState(true)
   const [minLengthError, setMinLengthError] = useState(false)
   const [emailError, setEmailError] = useState(false)
+  const [inputValid, setInputValid] = useState(false)
 
   useEffect(() => {
     for (const validation in validations) {
@@ -24,10 +32,20 @@ const useValidation = (value, validations) => {
       }
     }
   }, [value])
+
+  useEffect(() => {
+    if (isEmpty || minLengthError || emailError) {
+      setInputValid(false)
+    } else {
+      setInputValid(true)
+    }
+  }, [isEmpty, minLengthError, emailError])
+
   return {
     isEmpty,
     minLengthError,
     emailError,
+    inputValid,
   }
 }
 
@@ -82,8 +100,8 @@ export default function AddNew() {
           <form className="wrapper__description">
             <div className="wrapper__div2">О животном</div>
             <div className="wrapper__div3">Название / имя / кличка животного</div>
-            {name.isDirty && name.isEmpty && <div style={{ color: 'red' }}>Поле не может быть пустым</div>}
-            {name.isDirty && name.minLengthError && <div style={{ color: 'red' }}>Некорректная длина</div>}
+            {name.isDirty && name.isEmpty && <div style={{ color: 'red' }}>{ERRORS.IS_EMPTY}</div>}
+            {name.isDirty && name.minLengthError && <div style={{ color: 'red' }}>{ERRORS.MIN_LENGTH}</div>}
             <input
               onChange={(e) => name.onChange(e)}
               onBlur={(e) => name.onBlur(e)}
@@ -94,8 +112,8 @@ export default function AddNew() {
               placeholder="Введите что-то там"
             />
             <div className="wrapper__div5">Пару слов туда-сюда сделай</div>
-            {description.isDirty && description.isEmpty && <div style={{ color: 'red' }}>Поле не может быть пустым</div>}
-            {description.isDirty && description.minLengthError && <div style={{ color: 'red' }}>Некорректная длина</div>}
+            {description.isDirty && description.isEmpty && <div style={{ color: 'red' }}>{ERRORS.IS_EMPTY}</div>}
+            {description.isDirty && description.minLengthError && <div style={{ color: 'red' }}>{ERRORS.MIN_LENGTH}</div>}
             <textarea
               onChange={(e) => description.onChange(e)}
               onBlur={(e) => description.onBlur(e)}
@@ -107,8 +125,8 @@ export default function AddNew() {
             />
             <div className="wrapper__div7">Контактная информация</div>
             <div className="wrapper__div5">Номер телефона</div>
-            {phone.isDirty && phone.isEmpty && <div style={{ color: 'red' }}>Поле не может быть пустым</div>}
-            {phone.isDirty && phone.minLengthError && <div style={{ color: 'red' }}>Некорректная длина</div>}
+            {phone.isDirty && phone.isEmpty && <div style={{ color: 'red' }}>{ERRORS.IS_EMPTY}</div>}
+            {phone.isDirty && phone.minLengthError && <div style={{ color: 'red' }}>{ERRORS.MIN_LENGTH}</div>}
             <input
               onChange={(e) => phone.onChange(e)}
               onBlur={(e) => phone.onBlur(e)}
@@ -119,9 +137,9 @@ export default function AddNew() {
               placeholder="Введите что-то там"
             />
             <div className="wrapper__div5">Адрес электронной почты</div>
-            {email.isDirty && email.isEmpty && <div style={{ color: 'red' }}>Поле не может быть пустым</div>}
-            {email.isDirty && email.minLengthError && <div style={{ color: 'red' }}>Некорректная длина</div>}
-            {email.isDirty && email.emailError && <div style={{ color: 'red' }}>Некорректная почта</div>}
+            {email.isDirty && email.isEmpty && <div style={{ color: 'red' }}>{ERRORS.IS_EMPTY}</div>}
+            {email.isDirty && email.minLengthError && <div style={{ color: 'red' }}>{ERRORS.MIN_LENGTH}</div>}
+            {email.isDirty && email.emailError && <div style={{ color: 'red' }}>{ERRORS.EMAIL}</div>}
             <input
               onChange={(e) => email.onChange(e)}
               onBlur={(e) => email.onBlur(e)}
@@ -131,8 +149,15 @@ export default function AddNew() {
               className="wrapper__div4"
               placeholder="Введите что-то там"
             />
-            <div>
-              <button className="wrapper__button-save">Сохранить</button>
+            <div className="wrapper__div8">
+              {(!name.inputValid || !description.inputValid || !phone.inputValid || !email.inputValid) &&
+                email.isDirty &&
+                phone.isDirty &&
+                description.isDirty &&
+                name.isDirty && <div style={{ color: 'red' }}>{ERRORS.ALL}</div>}
+              <button disabled={!name.inputValid || !description.inputValid || !phone.inputValid || !email.inputValid} className="wrapper__button-save">
+                Сохранить
+              </button>
             </div>
           </form>
         </div>

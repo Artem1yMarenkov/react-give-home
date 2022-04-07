@@ -78,6 +78,10 @@
   margin-top: 60px;
 }
 
+.wrapper__div8 {
+  margin-top: 40px;
+}
+
 .wrapper__photo {
   width: 270px;
   height: 270px;
@@ -142,7 +146,7 @@ textarea::placeholder {
   display: inline-block;
   width: 270px;
   height: 60px;
-  margin-top: 60px;
+  margin-top: 20px;
   margin-bottom: 100px;
   transition: 0.3s;
   cursor: pointer;
