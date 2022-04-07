@@ -17,7 +17,7 @@ export default function LastAds() {
         // Тут лучше использовать деструкторизацию элемента
         // Согласись, читается лучше
         return dogList.map(({name, date, phone, adress}) => 
-            <div className="dog">
+            <div key={date} className="dog">
                 <img src={dogPhoto} alt="Dog"></img>
                 <div className="dog-data">
                     <h2 className="dog__name">{name}</h2>
