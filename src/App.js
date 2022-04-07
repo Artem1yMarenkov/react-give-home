@@ -1,13 +1,26 @@
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+
+import { getAuth } from './redux/selectors';
+
 import Auth from './Pages/Auth/Auth';
 import Home from './Pages/Home/Home';
 import AddNew from './Pages/AddNew/AddNew'
 import NoMatch from './Pages/NoMatch/NoMatch';
+
 import './App.scss';
+
+/**
+ * 1. Вызвать авторизацию
+ * 2. Если не авторизован, то на страницу входа
+ * 3. Если авторизован, то на главную
+ */
 
 function App() {
   const navigate = useNavigate();
+  const {isAuth, token} = useSelector(getAuth);
+
   // Check Authenticition
   useEffect(() => {
     const token = localStorage.getItem('token');
