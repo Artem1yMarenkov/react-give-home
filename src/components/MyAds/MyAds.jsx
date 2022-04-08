@@ -10,10 +10,15 @@ export default function MyAds() {
     const dispatch = useDispatch();
     const [modalActive, setModalActive] = useState(false);
     const myAds = useSelector(state => state.myAds.myAds);
+    const [id, setId] = useState('')
     const deleteAd = (myAds) => {
-        dispatch({type: "DELETE_AD",payload: myAds})
+        dispatch({type: "DELETE_AD",payload: id})
     }
     const MappedDogs = () => {
+        const handleClick = (date) => {
+            setModalActive(true)
+            setId(date)
+        }
         return myAds.map(({name, date}) => 
             <div key={date} className="dog">
                 <img src={dogPhoto}></img>
@@ -22,10 +27,9 @@ export default function MyAds() {
                     <p className="dog__date">Дата публицации: {date}</p>
                     <div className="dog-data-interactive">
                         <Link to={'/addnew'} className="dog__change">Редактировать</Link>
-                        <p className="dog__delete" onClick={() => setModalActive(true)}>Удалить</p>
+                        <p className="dog__delete" onClick={() => handleClick(date)}>Удалить</p>
                     </div>
                 </div>
-                <Modal active={modalActive} setActive={setModalActive} deleteAd={deleteAd} adId={date}/> 
             </div>  
         );
     }
@@ -35,6 +39,7 @@ export default function MyAds() {
         {myAds.length > 0 ?
         <>
         <MappedDogs />
+        <Modal active={modalActive} setActive={setModalActive} deleteAd={deleteAd} adId={id}/> 
         </>
         :
         <p className="dogs__null">Ваш список объявлений пуст!</p>

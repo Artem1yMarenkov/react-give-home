@@ -7,7 +7,7 @@ const Modal = ({active, setActive, deleteAd, adId}) => {
             <div className="modal__content" onClick={e => e.stopPropagation()}>
             <p>Вы действительно хотите удалить объявление?</p>
             <div className="modal__buttons">
-                <button className="modal__buttons-yes" onClick={() => deleteAd()}>Да</button>
+                <button className="modal__buttons-yes" onClick={() => console.log(adId)}>Да</button>
                 <button className="modal__buttons-no" onClick={() => setActive(false)} >Нет</button>
             </div>
             </div>
