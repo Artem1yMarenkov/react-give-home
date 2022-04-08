@@ -3,19 +3,18 @@ import dogPhoto from "../../img/sobaka.jpg"
 import './MyAds.css'
 import { useState } from "react";
 import Modal from "../Modal/Modal";
+import { useDispatch, useSelector } from "react-redux";
 
 
 export default function MyAds() {
-    const [modalActive, setModalActive] = useState(false)
-    const [dogList, setDogList] = useState([
-        { phone: '03005988', name: 'Joseph Francis Tribbiani Jr', date: 32, adress: 'm' },
-        { phone: '03005988', name: 'SlimShady', date: 16, adress: 'z' },
-        { phone: '03005988', name: 'NK', date: 2, adress: 'x' },
-        { phone: '03005988', name: 'Larsen', date: 3, adress: 'c' },
-        { phone: '03005988', name: 'Chili', date: 67, adress: 'b' },
-    ]);
+    const dispatch = useDispatch();
+    const [modalActive, setModalActive] = useState(false);
+    const myAds = useSelector(state => state.myAds.myAds);
+    const deleteAd = (myAds) => {
+        dispatch({type: "DELETE_AD",payload: myAds})
+    }
     const MappedDogs = () => {
-        return dogList.map(({name, date}) => 
+        return myAds.map(({name, date}) => 
             <div key={date} className="dog">
                 <img src={dogPhoto}></img>
                 <div className="dog-data">
@@ -26,14 +25,20 @@ export default function MyAds() {
                         <p className="dog__delete" onClick={() => setModalActive(true)}>Удалить</p>
                     </div>
                 </div>
+                <Modal active={modalActive} setActive={setModalActive} deleteAd={deleteAd} adId={date}/> 
             </div>  
         );
     }
 
     return (
     <>
+        {myAds.length > 0 ?
+        <>
         <MappedDogs />
-        <Modal active={modalActive} setActive={setModalActive}/> 
+        </>
+        :
+        <p className="dogs__null">Ваш список объявлений пуст!</p>
+        }
     </>
     );
 }
