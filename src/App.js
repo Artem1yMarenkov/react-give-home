@@ -8,6 +8,7 @@ import Auth from './Pages/Auth/Auth';
 import Home from './Pages/Home/Home';
 import AddNew from './Pages/AddNew/AddNew'
 import NoMatch from './Pages/NoMatch/NoMatch';
+import Ad from './Pages/Ad/Ad';
 
 import './App.scss';
 
@@ -33,6 +34,7 @@ function App() {
           <Route path="/" element={<Home/>} />
           <Route path="auth" element={<Auth/>} />
           <Route path="addnew" element={<AddNew/>} />
+          <Route path="ad" element={<Ad/>} />
           <Route path="*" element={<NoMatch/>} />
         </Routes>
       </section>

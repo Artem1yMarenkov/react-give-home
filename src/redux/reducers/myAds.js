@@ -1,3 +1,7 @@
+import {
+    DELETE_AD
+} from '../actions/myAds'
+
 const initialState = {
     myAds: [
         { phone: '03005988', name: 'Joseph Francis Tribbiani Jr', date: 32, id:32, adress: 'm' },
@@ -9,7 +13,7 @@ const initialState = {
 }
 export default function myAdsReducer(state = initialState, action) {
     switch(action.type) {
-        case "DELETE_AD":
+        case DELETE_AD:
             state.myAds.splice(myAds => myAds.id,1)
             return {...state}
         default:
