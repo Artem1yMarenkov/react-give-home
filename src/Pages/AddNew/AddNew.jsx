@@ -1,6 +1,9 @@
 import logo from '../../../src/img/logo.svg'
 import './AddNew.css'
 import { useEffect, useState } from 'react'
+import actionCreator from '../../redux/actions'
+import { ADD_ANIMAL } from '../../redux/actions/AddAnimal'
+import { useDispatch } from 'react-redux'
 
 const ERRORS = {
   MIN_LENGTH: 'Некорректная длина',
@@ -71,10 +74,19 @@ const useInput = (initialValue, validations) => {
 }
 
 export default function AddNew() {
-  const name = useInput('', { isEmpty: true, minLength: 2 })
-  const description = useInput('', { isEmpty: true, minLength: 10 })
-  const phone = useInput('', { isEmpty: true, minLength: 6 })
-  const email = useInput('', { isEmpty: true, minLength: 3, isEmail: true })
+  const dispatch = useDispatch()
+
+  const name = useInput('', { isEmpty: true, minLength: 1 })
+  const description = useInput('', { isEmpty: true, minLength: 1 })
+  const phone = useInput('', { isEmpty: true, minLength: 1 })
+  const email = useInput('', { isEmpty: true, minLength: 1, isEmail: true })
+
+  function handlerSubmit(e) {
+    e.preventDefault()
+    const animal = { name: name.value, description: description.value, phone: phone.value, email: email.value }
+    const action = actionCreator(ADD_ANIMAL)(animal)
+    dispatch(action)
+  }
 
   return (
     <>
@@ -97,7 +109,7 @@ export default function AddNew() {
             </div>
           </div>
 
-          <form className="wrapper__description">
+          <form className="wrapper__description" onSubmit={(e) => handlerSubmit(e)}>
             <div className="wrapper__div2">О животном</div>
             <div className="wrapper__div3">Название / имя / кличка животного</div>
             {name.isDirty && name.isEmpty && <div style={{ color: 'red' }}>{ERRORS.IS_EMPTY}</div>}
