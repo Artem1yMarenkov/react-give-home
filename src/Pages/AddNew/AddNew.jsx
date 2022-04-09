@@ -4,74 +4,8 @@ import { useEffect, useState } from 'react'
 import actionCreator from '../../redux/actions'
 import { ADD_ANIMAL } from '../../redux/actions/AddAnimal'
 import { useDispatch } from 'react-redux'
-
-const ERRORS = {
-  MIN_LENGTH: 'Некорректная длина',
-  IS_EMPTY: 'Поле не должно быть пустым',
-  EMAIL: 'Некорректная почта',
-  ALL: 'Неправильно заполнены данные',
-}
-
-const useValidation = (value, validations) => {
-  const [isEmpty, setEmpty] = useState(true)
-  const [minLengthError, setMinLengthError] = useState(false)
-  const [emailError, setEmailError] = useState(false)
-  const [inputValid, setInputValid] = useState(false)
-
-  useEffect(() => {
-    for (const validation in validations) {
-      // eslint-disable-next-line default-case
-      switch (validation) {
-        case 'minLength':
-          value.length < validations[validation] ? setMinLengthError(true) : setMinLengthError(false)
-          break
-        case 'isEmpty':
-          value ? setEmpty(false) : setEmpty(true)
-          break
-        case 'isEmail':
-          const re =
-            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-          re.test(String(value).toLowerCase()) ? setEmailError(false) : setEmailError(true)
-      }
-    }
-  }, [value])
-
-  useEffect(() => {
-    if (isEmpty || minLengthError || emailError) {
-      setInputValid(false)
-    } else {
-      setInputValid(true)
-    }
-  }, [isEmpty, minLengthError, emailError])
-
-  return {
-    isEmpty,
-    minLengthError,
-    emailError,
-    inputValid,
-  }
-}
-
-const useInput = (initialValue, validations) => {
-  const [value, setValue] = useState(initialValue)
-  const [isDirty, setDirty] = useState(false)
-  const valid = useValidation(value, validations)
-  const onChange = (e) => {
-    setValue(e.target.value)
-  }
-
-  const onBlur = (e) => {
-    setDirty(true)
-  }
-
-  return {
-    value,
-    onChange,
-    onBlur,
-    isDirty,
-    ...valid,
-  }
-}
+import { useInput } from '../../hooks/useInput'
+import { ERRORS_VALIDATE } from '../../vars/errorsValidate'
 
 export default function AddNew() {
   const dispatch = useDispatch()
@@ -112,8 +46,8 @@ export default function AddNew() {
           <form className="wrapper__description" onSubmit={(e) => handlerSubmit(e)}>
             <div className="wrapper__div2">О животном</div>
             <div className="wrapper__div3">Название / имя / кличка животного</div>
-            {name.isDirty && name.isEmpty && <div style={{ color: 'red' }}>{ERRORS.IS_EMPTY}</div>}
-            {name.isDirty && name.minLengthError && <div style={{ color: 'red' }}>{ERRORS.MIN_LENGTH}</div>}
+            {name.isDirty && name.isEmpty && <div style={{ color: 'red' }}>{ERRORS_VALIDATE.IS_EMPTY}</div>}
+            {name.isDirty && name.minLengthError && <div style={{ color: 'red' }}>{ERRORS_VALIDATE.MIN_LENGTH}</div>}
             <input
               onChange={(e) => name.onChange(e)}
               onBlur={(e) => name.onBlur(e)}
@@ -124,8 +58,8 @@ export default function AddNew() {
               placeholder="Введите что-то там"
             />
             <div className="wrapper__div5">Пару слов туда-сюда сделай</div>
-            {description.isDirty && description.isEmpty && <div style={{ color: 'red' }}>{ERRORS.IS_EMPTY}</div>}
-            {description.isDirty && description.minLengthError && <div style={{ color: 'red' }}>{ERRORS.MIN_LENGTH}</div>}
+            {description.isDirty && description.isEmpty && <div style={{ color: 'red' }}>{ERRORS_VALIDATE.IS_EMPTY}</div>}
+            {description.isDirty && description.minLengthError && <div style={{ color: 'red' }}>{ERRORS_VALIDATE.MIN_LENGTH}</div>}
             <textarea
               onChange={(e) => description.onChange(e)}
               onBlur={(e) => description.onBlur(e)}
@@ -137,8 +71,8 @@ export default function AddNew() {
             />
             <div className="wrapper__div7">Контактная информация</div>
             <div className="wrapper__div5">Номер телефона</div>
-            {phone.isDirty && phone.isEmpty && <div style={{ color: 'red' }}>{ERRORS.IS_EMPTY}</div>}
-            {phone.isDirty && phone.minLengthError && <div style={{ color: 'red' }}>{ERRORS.MIN_LENGTH}</div>}
+            {phone.isDirty && phone.isEmpty && <div style={{ color: 'red' }}>{ERRORS_VALIDATE.IS_EMPTY}</div>}
+            {phone.isDirty && phone.minLengthError && <div style={{ color: 'red' }}>{ERRORS_VALIDATE.MIN_LENGTH}</div>}
             <input
               onChange={(e) => phone.onChange(e)}
               onBlur={(e) => phone.onBlur(e)}
@@ -149,9 +83,9 @@ export default function AddNew() {
               placeholder="Введите что-то там"
             />
             <div className="wrapper__div5">Адрес электронной почты</div>
-            {email.isDirty && email.isEmpty && <div style={{ color: 'red' }}>{ERRORS.IS_EMPTY}</div>}
-            {email.isDirty && email.minLengthError && <div style={{ color: 'red' }}>{ERRORS.MIN_LENGTH}</div>}
-            {email.isDirty && email.emailError && <div style={{ color: 'red' }}>{ERRORS.EMAIL}</div>}
+            {email.isDirty && email.isEmpty && <div style={{ color: 'red' }}>{ERRORS_VALIDATE.IS_EMPTY}</div>}
+            {email.isDirty && email.minLengthError && <div style={{ color: 'red' }}>{ERRORS_VALIDATE.MIN_LENGTH}</div>}
+            {email.isDirty && email.emailError && <div style={{ color: 'red' }}>{ERRORS_VALIDATE.EMAIL}</div>}
             <input
               onChange={(e) => email.onChange(e)}
               onBlur={(e) => email.onBlur(e)}
@@ -166,7 +100,7 @@ export default function AddNew() {
                 email.isDirty &&
                 phone.isDirty &&
                 description.isDirty &&
-                name.isDirty && <div style={{ color: 'red' }}>{ERRORS.ALL}</div>}
+                name.isDirty && <div style={{ color: 'red' }}>{ERRORS_VALIDATE.ALL}</div>}
               <button disabled={!name.inputValid || !description.inputValid || !phone.inputValid || !email.inputValid} className="wrapper__button-save">
                 Сохранить
               </button>
