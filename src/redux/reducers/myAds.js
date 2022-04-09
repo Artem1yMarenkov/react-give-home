@@ -10,8 +10,8 @@ const initialState = {
 export default function myAdsReducer(state = initialState, action) {
     switch(action.type) {
         case "DELETE_AD":
-            console.log(state.myAds.filter(myAds => myAds.id))
-            return {...state, myAds: state.myAds.splice(myAds => myAds.id !== action.payload)}
+            state.myAds.splice(myAds => myAds.id,1)
+            return {...state}
         default:
             return state
     }

@@ -11,8 +11,8 @@ export default function MyAds() {
     const [modalActive, setModalActive] = useState(false);
     const myAds = useSelector(state => state.myAds.myAds);
     const [id, setId] = useState('')
-    const deleteAd = (myAds) => {
-        dispatch({type: "DELETE_AD",payload: id})
+    const deleteAd = () => {
+        dispatch({type: "DELETE_AD", payload: id})
     }
     const MappedDogs = () => {
         const handleClick = (date) => {
