@@ -1,11 +1,11 @@
 import logo from '../../../src/img/logo.svg'
 import './AddNew.css'
-import { useEffect, useState } from 'react'
 import actionCreator from '../../redux/actions'
 import { ADD_ANIMAL } from '../../redux/actions/AddAnimal'
 import { useDispatch } from 'react-redux'
 import { useInput } from '../../hooks/useInput'
 import { ERRORS_VALIDATE } from '../../vars/errorsValidate'
+import { fetching } from '../../fetching'
 
 export default function AddNew() {
   const dispatch = useDispatch()
@@ -17,9 +17,11 @@ export default function AddNew() {
 
   function handlerSubmit(e) {
     e.preventDefault()
-    const animal = { name: name.value, description: description.value, phone: phone.value, email: email.value }
+    const animal = { title: name.value, description: description.value, phone: phone.value, address: email.value }
+    console.log(animal)
     const action = actionCreator(ADD_ANIMAL)(animal)
     dispatch(action)
+    fetching(action)
   }
 
   return (
