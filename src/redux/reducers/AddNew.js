@@ -1,10 +1,10 @@
 import { ADD_ANIMAL } from '../actions/AddAnimal'
 
 const initialState = {
-  name: '',
+  title: '',
   description: '',
   phone: '',
-  email: '',
+  address: '',
 }
 
 export default function addNewReducer(state = initialState, action) {
@@ -12,10 +12,10 @@ export default function addNewReducer(state = initialState, action) {
     case ADD_ANIMAL:
       return {
         ...state,
-        name: action.name,
+        title: action.title,
         description: action.description,
         phone: action.phone,
-        email: action.email,
+        address: action.address,
       }
     default:
       return {

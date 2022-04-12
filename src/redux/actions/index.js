@@ -1,10 +1,10 @@
 const actionCreator = (typeAction) => (payload) => {
   return {
     type: typeAction,
-    name: payload.name,
+    title: payload.title,
     description: payload.description,
     phone: payload.phone,
-    email: payload.email,
+    address: payload.address,
   }
 }
 

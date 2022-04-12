@@ -10,14 +10,14 @@ import { fetching } from '../../fetching'
 export default function AddNew() {
   const dispatch = useDispatch()
 
-  const name = useInput('', { isEmpty: true, minLength: 1 })
+  const title = useInput('', { isEmpty: true, minLength: 1 })
   const description = useInput('', { isEmpty: true, minLength: 1 })
   const phone = useInput('', { isEmpty: true, minLength: 1 })
-  const email = useInput('', { isEmpty: true, minLength: 1, isEmail: true })
+  const address = useInput('', { isEmpty: true, minLength: 1, isEmail: true })
 
   function handlerSubmit(e) {
     e.preventDefault()
-    const animal = { title: name.value, description: description.value, phone: phone.value, address: email.value }
+    const animal = { title: title.value, description: description.value, phone: phone.value, address: address.value }
     console.log(animal)
     const action = actionCreator(ADD_ANIMAL)(animal)
     dispatch(action)
@@ -48,12 +48,12 @@ export default function AddNew() {
           <form className="wrapper__description" onSubmit={(e) => handlerSubmit(e)}>
             <div className="wrapper__div2">О животном</div>
             <div className="wrapper__div3">Название / имя / кличка животного</div>
-            {name.isDirty && name.isEmpty && <div style={{ color: 'red' }}>{ERRORS_VALIDATE.IS_EMPTY}</div>}
-            {name.isDirty && name.minLengthError && <div style={{ color: 'red' }}>{ERRORS_VALIDATE.MIN_LENGTH}</div>}
+            {title.isDirty && title.isEmpty && <div style={{ color: 'red' }}>{ERRORS_VALIDATE.IS_EMPTY}</div>}
+            {title.isDirty && title.minLengthError && <div style={{ color: 'red' }}>{ERRORS_VALIDATE.MIN_LENGTH}</div>}
             <input
-              onChange={(e) => name.onChange(e)}
-              onBlur={(e) => name.onBlur(e)}
-              value={name.value}
+              onChange={(e) => title.onChange(e)}
+              onBlur={(e) => title.onBlur(e)}
+              value={title.value}
               name="name"
               type="text"
               className="wrapper__div4"
@@ -85,25 +85,25 @@ export default function AddNew() {
               placeholder="Введите что-то там"
             />
             <div className="wrapper__div5">Адрес электронной почты</div>
-            {email.isDirty && email.isEmpty && <div style={{ color: 'red' }}>{ERRORS_VALIDATE.IS_EMPTY}</div>}
-            {email.isDirty && email.minLengthError && <div style={{ color: 'red' }}>{ERRORS_VALIDATE.MIN_LENGTH}</div>}
-            {email.isDirty && email.emailError && <div style={{ color: 'red' }}>{ERRORS_VALIDATE.EMAIL}</div>}
+            {address.isDirty && address.isEmpty && <div style={{ color: 'red' }}>{ERRORS_VALIDATE.IS_EMPTY}</div>}
+            {address.isDirty && address.minLengthError && <div style={{ color: 'red' }}>{ERRORS_VALIDATE.MIN_LENGTH}</div>}
+            {address.isDirty && address.emailError && <div style={{ color: 'red' }}>{ERRORS_VALIDATE.EMAIL}</div>}
             <input
-              onChange={(e) => email.onChange(e)}
-              onBlur={(e) => email.onBlur(e)}
-              value={email.value}
+              onChange={(e) => address.onChange(e)}
+              onBlur={(e) => address.onBlur(e)}
+              value={address.value}
               name="email"
               type="email"
               className="wrapper__div4"
               placeholder="Введите что-то там"
             />
             <div className="wrapper__div8">
-              {(!name.inputValid || !description.inputValid || !phone.inputValid || !email.inputValid) &&
-                email.isDirty &&
+              {(!title.inputValid || !description.inputValid || !phone.inputValid || !address.inputValid) &&
+                address.isDirty &&
                 phone.isDirty &&
                 description.isDirty &&
-                name.isDirty && <div style={{ color: 'red' }}>{ERRORS_VALIDATE.ALL}</div>}
-              <button disabled={!name.inputValid || !description.inputValid || !phone.inputValid || !email.inputValid} className="wrapper__button-save">
+                title.isDirty && <div style={{ color: 'red' }}>{ERRORS_VALIDATE.ALL}</div>}
+              <button disabled={!title.inputValid || !description.inputValid || !phone.inputValid || !address.inputValid} className="wrapper__button-save">
                 Сохранить
               </button>
             </div>

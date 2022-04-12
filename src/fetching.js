@@ -1,11 +1,6 @@
 const URL = `https://fathomless-gorge-97474.herokuapp.com/post`
 
-const user = {
-  password: 'Oleg',
-  email: 'oleg@oleg.oleg',
-}
-
-const token = localStorage.getItem('key')
+const token = localStorage.getItem('token')
 
 export function fetching(action) {
   fetch(URL, {
@@ -18,10 +13,9 @@ export function fetching(action) {
   })
     .then((answer) => {
       console.log(answer)
-      console.log(answer.message)
       answer.json()
+      if (answer.status === 400) alert('SAVE_POST_ERROR')
+      if (answer.status === 200) alert('SAVE_POST_SUCCESS')
     })
-    .then((ans) => {
-      console.log(ans)
-    })
+    .catch((err) => alert(err))
 }
