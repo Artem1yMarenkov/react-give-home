@@ -1,6 +1,6 @@
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { getAuth } from './redux/selectors';
 
@@ -23,8 +23,10 @@ function App() {
 
   // Check Authenticition
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    !token && navigate('/auth');
+    if (isAuth) {
+      const token = localStorage.getItem('token');
+      !token && navigate('/auth');
+    }
   }, []);
 
   return (

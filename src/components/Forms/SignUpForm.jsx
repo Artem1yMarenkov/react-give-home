@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Button, TextField } from "@mui/material";
+
+import { signupAction } from "../../redux/thunk/auth/signup";
 
 import useValidate from "../../hooks/useVlidate";
 
 import './Form.scss';
 
 export default function SignUpForm({onLoading}) {
+    const dispatch = useDispatch();
     const [login, setLogin] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -14,9 +18,8 @@ export default function SignUpForm({onLoading}) {
     const validate = useValidate(setError);
 
     /* TODO: REWRITE TO REDUX */
-    const sendData = data => {
-        onLoading(true);
-        setTimeout(() => onLoading(false), 1000);
+    const sendData = () => {
+        dispatch(signupAction({login, email, password}));
     };
     
     useEffect(() => {
