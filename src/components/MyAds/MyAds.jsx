@@ -1,18 +1,23 @@
 import { Link } from "react-router-dom";
 import dogPhoto from "../../img/sobaka.jpg"
 import './MyAds.css'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "../Modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
+import {deleteAd } from "../../redux/reducers/myAds";
+import { fetchMyAds } from "../../redux/asyncActions/myAdsArray";
 
 
 export default function MyAds() {
+    useEffect(() => {
+        dispatch(fetchMyAds())
+      });
     const dispatch = useDispatch();
     const [modalActive, setModalActive] = useState(false);
     const myAds = useSelector(state => state.myAds.myAds);
     const [id, setId] = useState('')
-    const deleteAd = () => {
-        dispatch({type: "DELETE_AD", payload: id})
+    const removeAd = () => {
+        dispatch(deleteAd(id))
     }
     const MappedDogs = () => {
         const handleClick = (date) => {
@@ -39,7 +44,7 @@ export default function MyAds() {
         {myAds.length > 0 ?
         <>
         <MappedDogs />
-        <Modal active={modalActive} setActive={setModalActive} deleteAd={deleteAd} adId={id}/> 
+        <Modal active={modalActive} setActive={setModalActive} removeAd={removeAd} adId={id}/> 
         </>
         :
         <p className="dogs__null">Ваш список объявлений пуст!</p>

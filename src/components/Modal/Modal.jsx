@@ -1,9 +1,9 @@
 import React from "react";
 import "./Modal.css"
 
-const Modal = ({active, setActive, deleteAd, adId}) => {
+const Modal = ({active, setActive, removeAd, adId}) => {
     const handleClick = () => {
-        deleteAd()
+        removeAd()
         setActive(false)
     }
     return (
