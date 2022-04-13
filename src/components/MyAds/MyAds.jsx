@@ -1,30 +1,54 @@
 import { Link } from "react-router-dom";
 import dogPhoto from "../../img/sobaka.jpg"
 import './MyAds.css'
+import { useState, useEffect } from "react";
+import Modal from "../Modal/Modal";
+import { useDispatch, useSelector } from "react-redux";
+import {deleteAd } from "../../redux/reducers/myAds";
+import { fetchMyAds } from "../../redux/asyncActions/myAdsArray";
+
+
 export default function MyAds() {
-    // А зачем второй абсолютно такой же компонент?
-    const dogs = [
-        { phone: '03005988', name: 'Joseph', date: 32, adress: 'm' },
-        { phone: '03005988', name: 'SlimShady', date: 16, adress: 'z' },
-        { phone: '03005988', name: 'NK', date: 2, adress: 'x' },
-        { phone: '03005988', name: 'Larsen', date: 3, adress: 'c' },
-        { phone: '03005988', name: 'Chili', date: 67, adress: 'b' },
-       ]
+    useEffect(() => {
+        dispatch(fetchMyAds())
+      }, []);
+    const dispatch = useDispatch();
+    const [modalActive, setModalActive] = useState(false);
+    const myAds = useSelector(state => state.myAds.myAds);
+    const [id, setId] = useState('')
+    const removeAd = () => {
+        dispatch(deleteAd(id))
+    }
     const MappedDogs = () => {
-        return dogs.map((element, index) => 
-            <div className="dog">
+        const handleClick = (date) => {
+            setModalActive(true)
+            setId(date)
+        }
+        return myAds.map(({title, id, phone,address}) => 
+            <div key={phone} className="dog">
                 <img src={dogPhoto}></img>
                 <div className="dog-data">
-                    <h2 className="dog__name">{element.name}</h2>
-                    <p className="dog__date">Дата публицации: {element.date}</p>
+                    <h2 className="dog__name">{title}</h2>
+                    <p className="dog__date">Дата публицации: {phone}</p>
                     <div className="dog-data-interactive">
                         <Link to={'/addnew'} className="dog__change">Редактировать</Link>
-                        <p className="dog__delete">Удалить</p>
+                        <p className="dog__delete" onClick={() => handleClick(id)}>Удалить</p>
                     </div>
                 </div>
-            </div>
+            </div>  
         );
     }
 
-    return <MappedDogs />;
+    return (
+    <>
+        {myAds.length > 0 ?
+        <>
+        <MappedDogs />
+        <Modal active={modalActive} setActive={setModalActive} removeAd={removeAd} adId={id}/> 
+        </>
+        :
+        <p className="dogs__null">Ваш список объявлений пуст!</p>
+        }
+    </>
+    );
 }

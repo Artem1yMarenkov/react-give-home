@@ -1,3 +1,4 @@
+
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import React, { useEffect } from 'react';
 
@@ -5,10 +6,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAuth, getGlobal } from './redux/selectors';
 import { CHECK_AUTH } from './redux/actions/auth';
 
-import Auth from './Pages/Auth/Auth';
-import Home from './Pages/Home/Home';
+import Auth from './Pages/Auth/Auth'
+import Home from './Pages/Home/Home'
 import AddNew from './Pages/AddNew/AddNew'
+
 import NoMatch from './Pages/NoMatch/NoMatch';
+import Ad from './Pages/Ad/Ad';
 
 import Loading from './components/Loading/Loading';
 
@@ -38,10 +41,12 @@ function App() {
           <Route path="/" element={<Home/>} />
           <Route path="auth" element={<Auth/>} />
           <Route path="addnew" element={<AddNew/>} />
+          <Route path="ad" element={<Ad/>} />
           <Route path="*" element={<NoMatch/>} />
         </Routes>
       </section>
   );
+
 }
 
-export default App;
+export default App
