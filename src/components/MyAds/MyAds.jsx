@@ -11,7 +11,7 @@ import { fetchMyAds } from "../../redux/asyncActions/myAdsArray";
 export default function MyAds() {
     useEffect(() => {
         dispatch(fetchMyAds())
-      });
+      }, []);
     const dispatch = useDispatch();
     const [modalActive, setModalActive] = useState(false);
     const myAds = useSelector(state => state.myAds.myAds);
@@ -24,15 +24,15 @@ export default function MyAds() {
             setModalActive(true)
             setId(date)
         }
-        return myAds.map(({name, date}) => 
-            <div key={date} className="dog">
+        return myAds.map(({title, id, phone,address}) => 
+            <div key={phone} className="dog">
                 <img src={dogPhoto}></img>
                 <div className="dog-data">
-                    <h2 className="dog__name">{name}</h2>
-                    <p className="dog__date">Дата публицации: {date}</p>
+                    <h2 className="dog__name">{title}</h2>
+                    <p className="dog__date">Дата публицации: {phone}</p>
                     <div className="dog-data-interactive">
                         <Link to={'/addnew'} className="dog__change">Редактировать</Link>
-                        <p className="dog__delete" onClick={() => handleClick(date)}>Удалить</p>
+                        <p className="dog__delete" onClick={() => handleClick(id)}>Удалить</p>
                     </div>
                 </div>
             </div>  
