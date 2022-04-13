@@ -1,0 +1,1 @@
+export const ADD_MANY_ADS = 'ADD_MANY_ADS'

@@ -7,8 +7,11 @@ import { getAuth } from './redux/selectors'
 import Auth from './Pages/Auth/Auth'
 import Home from './Pages/Home/Home'
 import AddNew from './Pages/AddNew/AddNew'
-import NoMatch from './Pages/NoMatch/NoMatch'
-import './App.scss'
+
+import NoMatch from './Pages/NoMatch/NoMatch';
+import Ad from './Pages/Ad/Ad';
+
+import './App.scss';
 
 /**
  * 1. Вызвать авторизацию
@@ -27,15 +30,17 @@ function App() {
   }, [])
 
   return (
-    <section className="app">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="auth" element={<Auth />} />
-        <Route path="addnew" element={<AddNew />} />
-        <Route path="*" element={<NoMatch />} />
-      </Routes>
-    </section>
-  )
+      <section className='app'>
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="auth" element={<Auth/>} />
+          <Route path="addnew" element={<AddNew/>} />
+          <Route path="ad" element={<Ad/>} />
+          <Route path="*" element={<NoMatch/>} />
+        </Routes>
+      </section>
+  );
+
 }
 
 export default App

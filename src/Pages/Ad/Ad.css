@@ -1,0 +1,46 @@
+.main-page__link {
+    color: #FF4949;
+}
+.main-page__link {
+    margin-top: 50px;
+}
+.ad {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.ad hr {
+    width: 636px;
+    margin-bottom: 20px;
+    border: none;
+    border-top: 1px solid #cdcdcd;
+}
+.ad-info {
+    display: flex;
+    flex-direction: row;
+}
+.ad-contacts {
+    margin-left: 20px;
+}
+.ad-contacts p {
+    margin: 0;
+}
+.ad__phone {
+    font-size: 22px;
+    font-weight: 500;
+}
+.ad__name {
+    font-weight: 400;
+    font-size: 40px;
+}
+.ad__picture {
+    width: 636px;
+    height: 478px;
+}
+.ad-description {
+    margin-top: 20px;
+    max-width: 636px;
+}
+.ad-description p {
+    margin: 0;
+}

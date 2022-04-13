@@ -3,6 +3,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    width: 200px;
     height: 30px;
 }
 .dog__change {
