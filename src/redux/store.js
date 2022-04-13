@@ -1,5 +1,6 @@
-import { createStore, applyMiddleware } from "@reduxjs/toolkit";
-import { authMiddleware } from "./middleware/auth";
-import rootReducer from "./reducers";
+import { createStore, applyMiddleware, compose } from 'redux'
+import { authMiddleware } from './middleware/auth'
+import combineReducers from './reducers/index'
 
-export const store = createStore(rootReducer, applyMiddleware(authMiddleware));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+export const store = createStore(combineReducers, composeEnhancers(applyMiddleware(authMiddleware)))
