@@ -1,1 +1,1 @@
-export const ADD_MANY_ADS = 'ADD_MANY_ADS'
+export const ADD_MANY_LAST_ADS = 'ADD_MANY_LAST_ADS'
