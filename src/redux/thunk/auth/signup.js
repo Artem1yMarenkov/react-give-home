@@ -1,6 +1,9 @@
+import { SET_AUTH_ERROR, SIGNUP_SUCCESS } from '../../actions/auth';
+import { IS_FETCHING } from '../../actions/global';
+
 export const signupAction = ({login, password, email}) => {
     return async (dispatch) => {
-        console.log('start fetching')
+        dispatch({type: IS_FETCHING, isFetching: true});
         let promise;
         try {
             promise = await fetch('https://fathomless-gorge-97474.herokuapp.com/auth/signup', {
@@ -13,11 +16,20 @@ export const signupAction = ({login, password, email}) => {
                 })
             });
         } catch {
-            console.log("fetch error!");
+            dispatch({type: IS_FETCHING, isFetching: false});
+            dispatch({type: SET_AUTH_ERROR});
         }
 
-        const json = await promise.json();
+        const status = promise.status;
 
-        console.log("response ->", json);
+        switch (status) {
+            case 200:
+                dispatch({type: SIGNUP_SUCCESS, success: true});
+                break;
+            default:
+                dispatch({type: SET_AUTH_ERROR, status});
+        }
+
+        dispatch({type: IS_FETCHING, isFetching: false});
     }
 }

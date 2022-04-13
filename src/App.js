@@ -1,36 +1,39 @@
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 
-import { getAuth } from './redux/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAuth, getGlobal } from './redux/selectors';
+import { CHECK_AUTH } from './redux/actions/auth';
 
 import Auth from './Pages/Auth/Auth';
 import Home from './Pages/Home/Home';
 import AddNew from './Pages/AddNew/AddNew'
 import NoMatch from './Pages/NoMatch/NoMatch';
 
+import Loading from './components/Loading/Loading';
+
 import './App.scss';
 
-/**
- * 1. Вызвать авторизацию
- * 2. Если не авторизован, то на страницу входа
- * 3. Если авторизован, то на главную
- */
-
 function App() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {isAuth, token} = useSelector(getAuth);
+  const auth = useSelector(getAuth);
+  const {isFetching} = useSelector(getGlobal);
+
+  useEffect(() => {
+    dispatch({type: CHECK_AUTH})
+  }, []);
 
   // Check Authenticition
   useEffect(() => {
-    if (isAuth) {
-      const token = localStorage.getItem('token');
-      !token && navigate('/auth');
-    }
-  }, []);
+    !auth.token && navigate('/auth');
+  }, [auth]);
 
   return (
       <section className='app'>
+        {
+          isFetching && <Loading isActive />
+        }
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="auth" element={<Auth/>} />

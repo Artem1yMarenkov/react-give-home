@@ -23,7 +23,6 @@ export default function SignUpForm({onLoading}) {
     };
     
     useEffect(() => {
-        console.log(error);
         !error && sendData();
     }, [error]);
 

@@ -10,10 +10,15 @@ import useTitle from "../../hooks/useTitle";
 import './Auth.scss';
 import authImage from "../../img/auth-image.png"
 import logo from '../../img/logo.svg';
+import { useDispatch, useSelector } from "react-redux";
+import { getAuth } from "../../redux/selectors";
+import { CHECK_AUTH } from "../../redux/actions/auth";
 
 
 export default function Auth() {
     useTitle('Авторизация');
+    const auth = useSelector(getAuth);
+    const dispatch = useDispatch();
 
     const [activeForm, setActiveForm] = useState('singup');
     const [isLoading, setIsLoading] = useState(false);
@@ -23,8 +28,8 @@ export default function Auth() {
     
     // Check Auth
     useEffect(() => {
-        localStorage.getItem('token') && navigate("/")
-    }, []);
+        auth.token && navigate('/');
+    }, [auth]);
 
     // Check Query Serch
     useEffect(() => {

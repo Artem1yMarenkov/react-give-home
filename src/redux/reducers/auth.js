@@ -1,33 +1,43 @@
 import {
-    SET_IS_AUTH, 
-    SINGIN,
-    SINGUP
+    SET_AUTH_ERROR,
+    SET_TOKEN
 } from '../actions/auth';
+
+const ERRORS = {
+    SERVER: "SERVER_ERROR",
+    DATA: "DATA_ERROR",
+    UNKNOWN: "UNKNOWN_ERROR"
+}
 
 const initialState = {
     token: null,
-    isAuth: false,
-    
-    isFetching: false,
     error: null,
 };
 
 export default function authReducer(state = initialState, action) {
     switch (action.type) {
-        case SINGIN:
+        case SET_TOKEN:
             return {
                 ...state,
-                token: action.payload.token
+                token: action.token
             }
-        case SINGUP:
-            return {
-                ...state,
-                token: action.payload.token
-            }
-        case SET_IS_AUTH: 
-            return {
-                ...state,
-                isAuth: action.payload.isAuth
+        case SET_AUTH_ERROR: 
+            switch (action.status) {
+                case 400:
+                    return {
+                        ...state,
+                        error: ERRORS.DATA
+                    }
+                case 500:
+                    return {
+                        ...state,
+                        error: ERRORS.SERVER
+                    }
+                default:
+                    return {
+                        ...state,
+                        error: ERRORS.UNKNOWN
+                    }
             }
         default:
             return {

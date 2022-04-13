@@ -1,3 +1,5 @@
-export const SINGIN = 'SINGIN';
-export const SINGUP = 'SINGUP';
-export const SET_IS_AUTH = "SET_IS_AUTH";
+export const SET_AUTH_ERROR = "SET_AUTH_ERROR";
+export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
+export const SET_TOKEN = "SET_TOKEN"
+
+export const CHECK_AUTH = "CHECK_AUTH";

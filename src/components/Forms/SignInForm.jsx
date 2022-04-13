@@ -1,37 +1,35 @@
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 import { Button, TextField } from "@mui/material";
-import validator from 'validator';
-
 import './Form.scss';
+import { useDispatch } from "react-redux";
+import { signinAction } from "../../redux/thunk/auth/signin";
+import useValidate from "../../hooks/useVlidate";
 
 export default function SignInForm() {
-    const [login, setLogin] = useState();
-    const [password, setPassword] = useState();
+    const dispatch = useDispatch();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("error");
 
-    const handleSubmit = (event) => {
+    const validate = useValidate(setError);
+
+    /* TODO: REWRITE TO REDUX */
+    const sendData = () => {
+        dispatch(signinAction({email, password}));
+    };
+    
+    useEffect(() => {
+        !error && sendData();
+    }, [error]);
+
+    // Event Handlers
+    const handleEmail = e => setEmail(e.target.value);
+    const handlePassword = e => setPassword(e.target.value);
+
+    const handleSubmit = event => {
         event.preventDefault();
-        console.log('submit')
-    }
-
-    const handleChange = (event) => {
-        const name = event.target.name;
-        const value = event.target.value;
-
-        let valid;
-        switch (name) {
-            case 'login':
-                valid = validator.isLength(value, {min: 3, max: 100});
-                break;
-            case 'mail':
-                valid = validator.isEmail(value);
-                break;
-            case 'password':
-                valid = validator.isLength(value, {min: 3, max: 100});
-                break;
-            default:
-                break;
-        }
+        validate({email, password});
+        console.log('test')
     }
 
     return (
@@ -39,21 +37,24 @@ export default function SignInForm() {
             <h2 className="form__header">Войти</h2>
             <TextField 
                 className="form__input"
-                label="Логин" 
-                name="login"
+                label="Почта" 
+                name="email"
                 variant="outlined"
-                onChange={handleChange}
+                onChange={handleEmail}
             />
+            { error == "email" && <p className="form__danger">Введите почту</p> }
             <TextField 
                 className="form__input"
                 label="Пароль" 
                 variant="outlined" 
                 name="password"
                 type="password"
-                onChange={handleChange}
+                onChange={handlePassword}
             />
+            { error == "password" && <p className="form__danger">Длина пароля должна быть от 8 до 20 символов</p> }
             <Button 
                 variant="outlined"
+                type="submit"
             >Войти</Button>
         </form>
     );
