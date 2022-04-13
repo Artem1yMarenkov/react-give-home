@@ -29,7 +29,6 @@ export default function SignInForm() {
     const handleSubmit = event => {
         event.preventDefault();
         validate({email, password});
-        console.log('test')
     }
 
     return (
