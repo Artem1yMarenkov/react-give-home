@@ -1,12 +1,13 @@
-import { Routes, Route, useNavigate } from 'react-router-dom';
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { Routes, Route, useNavigate } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Provider, useSelector } from 'react-redux'
 
-import { getAuth } from './redux/selectors';
+import { getAuth } from './redux/selectors'
 
-import Auth from './Pages/Auth/Auth';
-import Home from './Pages/Home/Home';
+import Auth from './Pages/Auth/Auth'
+import Home from './Pages/Home/Home'
 import AddNew from './Pages/AddNew/AddNew'
+
 import NoMatch from './Pages/NoMatch/NoMatch';
 import Ad from './Pages/Ad/Ad';
 
@@ -19,14 +20,14 @@ import './App.scss';
  */
 
 function App() {
-  const navigate = useNavigate();
-  const {isAuth, token} = useSelector(getAuth);
+  const navigate = useNavigate()
+  const { isAuth, token } = useSelector(getAuth)
 
   // Check Authenticition
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    !token && navigate('/auth');
-  }, []);
+    const token = localStorage.getItem('token')
+    !token && navigate('/auth')
+  }, [])
 
   return (
       <section className='app'>
@@ -39,6 +40,7 @@ function App() {
         </Routes>
       </section>
   );
+
 }
 
-export default App;
+export default App

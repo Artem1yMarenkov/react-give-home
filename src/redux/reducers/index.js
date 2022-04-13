@@ -2,9 +2,11 @@ import { combineReducers } from "@reduxjs/toolkit";
 import authReducer from "./auth";
 import lastAdsReducer from "./lastAds";
 import myAdsReducer from "./myAds";
+import addNewReducer from './AddNew'
 
 export default combineReducers({
     auth: authReducer,
     myAds: myAdsReducer,
-    lastAds: lastAdsReducer
+    lastAds: lastAdsReducer,
+    addnew: addNewReducer,
 })
