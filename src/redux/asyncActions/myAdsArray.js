@@ -4,7 +4,7 @@ const token = localStorage.getItem('token')
 
 export const fetchMyAds = () => {
     return function(dispatch) {
-        fetch('https://fathomless-gorge-97474.herokuapp.com/posts', {
+        fetch('https://fathomless-gorge-97474.herokuapp.com/posts/my', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
@@ -12,6 +12,6 @@ export const fetchMyAds = () => {
             }
         })
             .then(response => response.json())
-            .then(json => dispatch(addManyAds(json.posts)))
+            .then(json => dispatch(addManyAds(json)))
     }
 }

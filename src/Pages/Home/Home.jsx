@@ -1,6 +1,7 @@
 import useTitle from '../../hooks/useTitle'
 import './Home.css'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import logo from '../../img/logo.svg'
 import TabPanel from '../../components/Tabs/Tabs'
 import MyAds from '../../components/MyAds/MyAds'
@@ -23,7 +24,7 @@ export default function Home() {
           <TabPanel tabs={tabs} />
         </div>
         <div className="catalog-interactive">
-          <button className="catalog-interactive__button">Добавить объявление</button>
+          <Link to='/addnew'><button className="catalog-interactive__button">Добавить объявление</button></Link>
           <div className="catalog-interactive-filter"></div>
         </div>
       </section>

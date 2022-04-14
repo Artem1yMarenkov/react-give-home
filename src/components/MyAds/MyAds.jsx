@@ -20,9 +20,9 @@ export default function MyAds() {
         dispatch(deleteAd(id))
     }
     const MappedDogs = () => {
-        const handleClick = (date) => {
+        const handleClick = (id) => {
             setModalActive(true)
-            setId(date)
+            setId(id)
         }
         return myAds.map(({title, id, phone,address}) => 
             <div key={phone} className="dog">
