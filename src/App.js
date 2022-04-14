@@ -41,7 +41,7 @@ function App() {
           <Route path="/" element={<Home/>} />
           <Route path="auth" element={<Auth/>} />
           <Route path="addnew" element={<AddNew/>} />
-          <Route path="ad" element={<Ad/>} />
+          <Route path="ad/:id" element={<Ad/>} />
           <Route path="*" element={<NoMatch/>} />
         </Routes>
       </section>
