@@ -3,8 +3,9 @@ import { addManyAds } from "../reducers/myAds";
 const token = localStorage.getItem('token')
 
 export const fetchMyAds = () => {
-    return function(dispatch) {
-        fetch('https://fathomless-gorge-97474.herokuapp.com/posts/my', {
+    return async (dispatch) => {
+        try {
+            await fetch('https://fathomless-gorge-97474.herokuapp.com/posts/my', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
@@ -13,5 +14,8 @@ export const fetchMyAds = () => {
         })
             .then(response => response.json())
             .then(json => dispatch(addManyAds(json)))
+        } catch {
+            alert('Server Error')
+        }
     }
 }
