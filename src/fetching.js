@@ -21,7 +21,7 @@ export function fetching(action) {
 }
 
 export function fetchingDelete(action, id) {
-    fetch(`${URL}/:${id}`, {
+    fetch(`${URL}/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json;charset=utf-8',
