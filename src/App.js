@@ -9,6 +9,7 @@ import { CHECK_AUTH } from './redux/actions/auth';
 import Auth from './Pages/Auth/Auth'
 import Home from './Pages/Home/Home'
 import AddNew from './Pages/AddNew/AddNew'
+import Edit from './Pages/Edit/Edit'
 
 import NoMatch from './Pages/NoMatch/NoMatch';
 import Ad from './Pages/Ad/Ad';
@@ -42,6 +43,7 @@ function App() {
           <Route path="auth" element={<Auth/>} />
           <Route path="addnew" element={<AddNew/>} />
           <Route path="ad/:id" element={<Ad/>} />
+          <Route path="edit" element={<Edit/>} />
           <Route path="*" element={<NoMatch/>} />
         </Routes>
       </section>
