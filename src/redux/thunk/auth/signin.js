@@ -15,9 +15,8 @@ export const signinAction = ({password, email}) => {
                     password, email
                 })
             });
-        } catch {
-            dispatch({type: IS_FETCHING, isFetching: false});
-            dispatch({type: SET_AUTH_ERROR});
+        } catch (error) {
+            dispatch({type: SET_AUTH_ERROR, errorMessage: error});
         }
 
         const res = await promise.json();
@@ -29,7 +28,7 @@ export const signinAction = ({password, email}) => {
                 dispatch({type: SET_TOKEN, token: res.token});
                 break;
             default:
-                dispatch({type: SET_AUTH_ERROR, status});
+                dispatch({type: SET_AUTH_ERROR, errorMessage: res.message});
         }
 
         localStorage.token = res.token;
