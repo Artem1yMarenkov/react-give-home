@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import { useInput } from '../../hooks/useInput'
 import { ERRORS_VALIDATE } from '../../vars/errorsValidate'
 import { fetchingDelete } from '../../fetching'
+import {Link} from "react-router-dom";
 
 export default function Edit() {
 
@@ -36,7 +37,7 @@ export default function Edit() {
       <>
         <div className="wrapper">
           <header>
-            <img src={logo} alt=""></img>
+            <Link to='/'> <img src={logo} alt=""></img> </Link>
             <button className="wrapper__button-quit">Выйти</button>
           </header>
           <div className="wrapper__div">Добавление записи</div>
