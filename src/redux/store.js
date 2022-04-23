@@ -4,7 +4,6 @@ import { authMiddleware } from "./middleware/auth";
 import { authErrorMiddleware } from "./middleware/authError";
 import rootReducer from "./reducers";
 
-
 export const store = createStore(
     rootReducer, 
     applyMiddleware(
@@ -13,4 +12,3 @@ export const store = createStore(
         authMiddleware
     )
 );
-
