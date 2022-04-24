@@ -4,7 +4,7 @@ import './MyAds.css'
 import { useState, useEffect } from "react";
 import Modal from "../Modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
-import {deleteAd } from "../../redux/reducers/myAds";
+import { deleteAdFetch } from "../../redux/asyncActions/deleteAdFetch";
 import { fetchMyAds } from "../../redux/asyncActions/myAdsArray";
 
 
@@ -17,7 +17,7 @@ export default function MyAds() {
     const myAds = useSelector(state => state.myAds.myAds);
     const [id, setId] = useState('')
     const removeAd = () => {
-        dispatch(deleteAd(id))
+        dispatch(deleteAdFetch(id));
     }
     const MappedDogs = () => {
         const handleClick = (id) => {

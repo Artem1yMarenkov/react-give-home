@@ -5,20 +5,29 @@ const token = localStorage.getItem('token')
 export const fetchLastAds = () => {
     return async (dispatch) => {
         dispatch({type: IS_FETCHING, isFetching: true});
+        let promise
         try {
-            await fetch('https://fathomless-gorge-97474.herokuapp.com/posts', {
+            promise = await fetch('https://fathomless-gorge-97474.herokuapp.com/posts', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
                 Authorization: `Bearer ${token}`,
             }
         })
-            .then(response => response.json())
-            .then(json => dispatch(addManyAds(json.posts)))
         } catch {
             dispatch({type: IS_FETCHING, isFetching: false});
         }
+        const res = await promise.json();
 
+        const status = promise.status;
+
+        switch (status) {
+            case 200:
+                dispatch(addManyAds(res.posts))
+                break;
+            default:
+                break;
+        }
         dispatch({type: IS_FETCHING, isFetching: false});
 
     }

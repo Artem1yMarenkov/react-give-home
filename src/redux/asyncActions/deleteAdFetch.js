@@ -1,29 +1,29 @@
-import { addManyAds } from "../reducers/myAds";
-
+import {deleteAd } from "../../redux/reducers/myAds";
 const token = localStorage.getItem('token')
 
-export const fetchMyAds = () => {
-    return async (dispatch) => {
+export const deleteAdFetch = (id) => {
+    return async (dispatch) => { 
         let promise
         try {
-            promise = await fetch('https://fathomless-gorge-97474.herokuapp.com/posts/my', {
-            method: 'GET',
+            promise = await fetch('https://fathomless-gorge-97474.herokuapp.com/post', {
+            method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
                 Authorization: `Bearer ${token}`,
-            }
+            },
+            body: JSON.stringify({
+                'id': id
+            })
         })
         } catch {
-            alert('Server Error')
+            alert('server error')
         }
-
-        const res = await promise.json();
 
         const status = promise.status;
 
         switch (status) {
             case 200:
-                dispatch(addManyAds(res))
+                dispatch(deleteAd(id))
                 break;
             default:
                 break;
