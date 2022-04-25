@@ -25,13 +25,9 @@ export default function Ad () {
     return (
         <>
             {ad && (
-                <div className="wrapper">
-                <header>
-                    <Link to='/'><img src={logo}></img></Link>
-                    <button className="header__button">Выйти</button>
-                </header>
+            <div className="wrapper">
                 <div className="main-page__link">
-                <Link to={'/'}>вернуться на главную</Link>
+                    <Link to={'/'}>вернуться на главную</Link>
                 </div>
                 <div className="ad">
                     <p className="ad__name">{ad.title}</p>

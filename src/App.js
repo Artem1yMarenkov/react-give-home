@@ -15,6 +15,7 @@ import NoMatch from './Pages/NoMatch/NoMatch';
 import Ad from './Pages/Ad/Ad';
 
 import Loading from './components/Loading/Loading';
+import Header from './components/Header/Header';
 
 import './App.scss';
 
@@ -25,7 +26,7 @@ function App() {
   const {isFetching} = useSelector(getGlobal);
 
   useEffect(() => {
-    dispatch({type: CHECK_AUTH})
+    dispatch({type: CHECK_AUTH});
   }, []);
 
   // Check Authenticition
@@ -35,6 +36,7 @@ function App() {
 
   return (
       <section className='app'>
+        <Header />
         {
           isFetching && <Loading isActive />
         }

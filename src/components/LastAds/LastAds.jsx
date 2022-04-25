@@ -7,8 +7,8 @@ import { fetchLastAds } from "../../redux/asyncActions/lastAdsArray";
 
 export default function LastAds() {
     useEffect(() => {
-        dispatch(fetchLastAds())
-      }, []);
+        dispatch(fetchLastAds());
+    }, []);
     const dispatch = useDispatch();
     const lastAds = useSelector(state => state.lastAds.lastAds);
     const MappedDogs = () => {

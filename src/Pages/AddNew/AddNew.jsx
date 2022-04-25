@@ -28,10 +28,6 @@ export default function AddNew() {
   return (
     <>
       <div className="wrapper">
-        <header>
-          <Link to='/'><img src={logo}></img></Link>
-          <button className="wrapper__button-quit">Выйти</button>
-        </header>
         <div className="wrapper__div">Добавление записи</div>
         <div className="wrapper__main">
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>

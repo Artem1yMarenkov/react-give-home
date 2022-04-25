@@ -16,6 +16,7 @@ export const signinAction = ({password, email}) => {
                 })
             });
         } catch (error) {
+            dispatch({type: IS_FETCHING, isFetching: false});
             dispatch({type: SET_AUTH_ERROR, errorMessage: error});
         }
 
@@ -25,13 +26,14 @@ export const signinAction = ({password, email}) => {
 
         switch (status) {
             case 200:
+                localStorage.token = res.token;
                 dispatch({type: SET_TOKEN, token: res.token});
                 break;
             default:
                 dispatch({type: SET_AUTH_ERROR, errorMessage: res.message});
+                alert("Ошибка входа");
         }
 
-        localStorage.token = res.token;
         dispatch({type: IS_FETCHING, isFetching: false});
     }
 }

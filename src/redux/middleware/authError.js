@@ -1,4 +1,5 @@
-import { SET_AUTH_ERROR, SET_TOKEN } from "../actions/auth";
+import { SET_AUTH_ERROR } from "../actions/auth";
+import logout from "../thunk/auth/logout";
 
 const VERIFY_TOKEN_ERROR = "VERIFY_TOKEN_ERROR";
 
@@ -7,12 +8,11 @@ export const authErrorMiddleware = store => next => action => {
         return next(action);
     }
 
-    const errorMessage = action.payload;
+    const errorMessage = action.errorMessage;
 
     switch (errorMessage) {
         case VERIFY_TOKEN_ERROR:
-            localStorage.removeItem("token");
-            return next({type: SET_TOKEN, token: null});
+            return next(logout());
         default:
             return next(action);
     }

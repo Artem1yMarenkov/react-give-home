@@ -7,8 +7,8 @@ import rootReducer from "./reducers";
 export const store = createStore(
     rootReducer, 
     applyMiddleware(
-        thunk,
         authErrorMiddleware,
-        authMiddleware
+        authMiddleware,
+        thunk,
     )
 );

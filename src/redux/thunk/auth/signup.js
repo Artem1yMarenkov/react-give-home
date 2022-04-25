@@ -25,9 +25,11 @@ export const signupAction = ({login, password, email}) => {
         switch (status) {
             case 200:
                 dispatch({type: SIGNUP_SUCCESS, success: true});
+                alert("Регистрация прошла успешно");
                 break;
             default:
                 dispatch({type: SET_AUTH_ERROR, status});
+                alert("Ошибка регистрации");
         }
 
         dispatch({type: IS_FETCHING, isFetching: false});
