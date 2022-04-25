@@ -4,15 +4,19 @@ import {
 } from '../actions/myAds'
 
 const initialState = {
-    myAds: [
-    ]
+    myAds: []
 }
 
 
 export default function myAdsReducer(state = initialState, action) {
     switch(action.type) {
         case ADD_MANY_MY_ADS:
-            return {...state, myAds: [...action.payload]}
+            const {payload} = action;
+            console.log(action);
+            return {
+                ...state,
+                myAds: payload ? [...payload] : []
+            }
         case DELETE_AD:
             return {...state}
         default:

@@ -40,6 +40,7 @@ export default function SignInForm() {
                 name="email"
                 variant="outlined"
                 onChange={handleEmail}
+                autoComplete="off"
             />
             { error == "email" && <p className="form__danger">Введите почту</p> }
             <TextField 
@@ -49,6 +50,7 @@ export default function SignInForm() {
                 name="password"
                 type="password"
                 onChange={handlePassword}
+                autoComplete="off"
             />
             { error == "password" && <p className="form__danger">Длина пароля должна быть от 8 до 20 символов</p> }
             <Button 

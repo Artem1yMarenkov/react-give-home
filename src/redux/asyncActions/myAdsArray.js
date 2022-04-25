@@ -1,5 +1,6 @@
+import { SET_AUTH_ERROR } from '../actions/auth';
+import { IS_FETCHING } from '../actions/global';
 import { addManyAds } from "../reducers/myAds";
-
 const token = localStorage.getItem('token')
 
 export const fetchMyAds = () => {

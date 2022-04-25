@@ -9,11 +9,13 @@ import { CHECK_AUTH } from './redux/actions/auth';
 import Auth from './Pages/Auth/Auth'
 import Home from './Pages/Home/Home'
 import AddNew from './Pages/AddNew/AddNew'
+import Edit from './Pages/Edit/Edit'
 
 import NoMatch from './Pages/NoMatch/NoMatch';
 import Ad from './Pages/Ad/Ad';
 
 import Loading from './components/Loading/Loading';
+import Header from './components/Header/Header';
 
 import './App.scss';
 
@@ -24,7 +26,7 @@ function App() {
   const {isFetching} = useSelector(getGlobal);
 
   useEffect(() => {
-    dispatch({type: CHECK_AUTH})
+    dispatch({type: CHECK_AUTH});
   }, []);
 
   // Check Authenticition
@@ -34,6 +36,7 @@ function App() {
 
   return (
       <section className='app'>
+        <Header />
         {
           isFetching && <Loading isActive />
         }
@@ -42,6 +45,7 @@ function App() {
           <Route path="auth" element={<Auth/>} />
           <Route path="addnew" element={<AddNew/>} />
           <Route path="ad/:id" element={<Ad/>} />
+          <Route path="edit" element={<Edit/>} />
           <Route path="*" element={<NoMatch/>} />
         </Routes>
       </section>
