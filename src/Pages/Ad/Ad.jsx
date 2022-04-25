@@ -27,7 +27,7 @@ export default function Ad () {
             {ad && (
                 <div className="wrapper">
                 <header>
-                    <img src={logo}></img>
+                    <Link to='/'><img src={logo}></img></Link>
                     <button className="header__button">Выйти</button>
                 </header>
                 <div className="main-page__link">
