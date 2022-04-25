@@ -7,21 +7,6 @@ const initialState = {
     myAds: []
 }
 
-const token = localStorage.getItem('token')
-
-const deleteFetch = (id) => {
-    fetch('https://fathomless-gorge-97474.herokuapp.com/post', {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json;charset=utf-8',
-            Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-            'id': id
-        })
-    })
-    .then(res => console.log(res))
-}
 
 export default function myAdsReducer(state = initialState, action) {
     switch(action.type) {
@@ -33,7 +18,6 @@ export default function myAdsReducer(state = initialState, action) {
                 myAds: payload ? [...payload] : []
             }
         case DELETE_AD:
-            deleteFetch(action.payload)
             return {...state}
         default:
             return state
