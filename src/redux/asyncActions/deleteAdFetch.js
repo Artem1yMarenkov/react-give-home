@@ -1,4 +1,5 @@
 import {deleteAd } from "../../redux/reducers/myAds";
+import { fetchMyAds } from "../../redux/asyncActions/myAdsArray";
 const token = localStorage.getItem('token')
 
 export const deleteAdFetch = (id) => {
@@ -24,6 +25,7 @@ export const deleteAdFetch = (id) => {
         switch (status) {
             case 200:
                 dispatch(deleteAd(id))
+                dispatch(fetchMyAds())
                 break;
             default:
                 break;

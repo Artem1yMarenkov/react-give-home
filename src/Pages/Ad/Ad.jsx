@@ -31,7 +31,7 @@ export default function Ad () {
                     <button className="header__button">Выйти</button>
                 </header>
                 <div className="main-page__link">
-                <Link to={'/'}>вернуться на главную</Link>
+                <Link to={'/'}>Вернуться на главную</Link>
                 </div>
                 <div className="ad">
                     <p className="ad__name">{ad.title}</p>

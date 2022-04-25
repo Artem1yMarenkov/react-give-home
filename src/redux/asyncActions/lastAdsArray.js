@@ -18,17 +18,17 @@ export const fetchLastAds = () => {
             dispatch({type: IS_FETCHING, isFetching: false});
         }
         const res = await promise.json();
-
+        let rev = res.posts.reverse()
         const status = promise.status;
 
         switch (status) {
             case 200:
-                dispatch(addManyAds(res.posts))
+                dispatch(addManyAds(rev))
                 break;
             default:
                 break;
         }
-        dispatch({type: IS_FETCHING, isFetching: false});
 
+        dispatch({type: IS_FETCHING, isFetching: false});
     }
 }

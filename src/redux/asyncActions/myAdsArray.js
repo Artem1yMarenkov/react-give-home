@@ -18,6 +18,7 @@ export const fetchMyAds = () => {
         }
 
         const res = await promise.json();
+        console.log(res)
 
         const status = promise.status;
 
