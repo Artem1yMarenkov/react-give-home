@@ -1,5 +1,5 @@
 import { SET_AUTH_ERROR } from "../actions/auth";
-import logout from "../thunk/auth/logout";
+import { logout } from "../slices/auth";
 
 const VERIFY_TOKEN_ERROR = "VERIFY_TOKEN_ERROR";
 
