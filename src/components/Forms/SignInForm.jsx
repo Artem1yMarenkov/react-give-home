@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button, TextField } from "@mui/material";
 import './Form.scss';
 import { useDispatch } from "react-redux";
-import { signinAction } from "../../redux/thunk/auth/signin";
+import signin from "../../redux/thunk/auth/signin";
 import useValidate from "../../hooks/useVlidate";
 
 export default function SignInForm() {
@@ -15,7 +15,7 @@ export default function SignInForm() {
 
     /* TODO: REWRITE TO REDUX */
     const sendData = () => {
-        dispatch(signinAction({email, password}));
+        dispatch(signin({email, password}));
     };
     
     useEffect(() => {

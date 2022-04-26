@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { getAuth, getGlobal } from './redux/selectors';
-import { CHECK_AUTH } from './redux/actions/auth';
+import { checkAuth } from './redux/slices/auth';
 
 import Auth from './Pages/Auth/Auth'
 import Home from './Pages/Home/Home'
@@ -26,7 +26,7 @@ function App() {
   const {isFetching} = useSelector(getGlobal);
 
   useEffect(() => {
-    dispatch({type: CHECK_AUTH});
+    dispatch(checkAuth());
   }, []);
 
   // Check Authenticition
