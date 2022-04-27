@@ -8,6 +8,8 @@ import useValidate from "../../hooks/useVlidate";
 
 import './Form.scss';
 
+import signup from "../../redux/thunk/auth/signup";
+
 export default function SignUpForm({onLoading}) {
     const dispatch = useDispatch();
     const [login, setLogin] = useState("");
@@ -19,7 +21,7 @@ export default function SignUpForm({onLoading}) {
 
     /* TODO: REWRITE TO REDUX */
     const sendData = () => {
-        dispatch(signupAction({login, email, password}));
+        dispatch(signup({login, email, password}));
     };
     
     useEffect(() => {

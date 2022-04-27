@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import logout from "../../redux/thunk/auth/logout";
 import { getAuth } from "../../redux/selectors";
 import logo from '../../img/logo.svg';
+import { logout } from "../../redux/slices/auth";
 
 export default function Header() {
     const auth = useSelector(getAuth);
