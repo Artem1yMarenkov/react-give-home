@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import { useInput } from '../../hooks/useInput'
 import { ERRORS_VALIDATE } from '../../vars/errorsValidate'
 import { fetching } from '../../fetching'
+import { Link } from 'react-router-dom'
 
 export default function AddNew() {
   const dispatch = useDispatch()
@@ -27,10 +28,6 @@ export default function AddNew() {
   return (
     <>
       <div className="wrapper">
-        <header>
-          <img src={logo} alt=""></img>
-          <button className="wrapper__button-quit">Выйти</button>
-        </header>
         <div className="wrapper__div">Добавление записи</div>
         <div className="wrapper__main">
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>

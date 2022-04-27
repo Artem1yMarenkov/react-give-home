@@ -1,9 +1,11 @@
-import { CHECK_AUTH, SET_AUTH_ERROR, SET_TOKEN } from '../../actions/auth';
-import { IS_FETCHING } from '../../actions/global';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const signinAction = ({password, email}) => {
-    return async (dispatch) => {
-        dispatch({type: IS_FETCHING, isFetching: true});
+const ERROR = "ERROR";
+const SUCCESS = "SUCCESS";
+
+const signin = createAsyncThunk(
+    'auth/signin',
+    async ({password, email}) => {
         let promise;
         try {
             promise = await fetch('https://fathomless-gorge-97474.herokuapp.com/auth/signin', {
@@ -16,23 +18,20 @@ export const signinAction = ({password, email}) => {
                 })
             });
         } catch {
-            dispatch({type: IS_FETCHING, isFetching: false});
-            dispatch({type: SET_AUTH_ERROR});
+            return { type: ERROR };
         }
-
-        const res = await promise.json();
 
         const status = promise.status;
 
         switch (status) {
             case 200:
-                dispatch({type: SET_TOKEN, token: res.token});
-                break;
+                const {token} = await promise.json();
+                localStorage.token = token;
+                return { type: SUCCESS, token};
             default:
-                dispatch({type: SET_AUTH_ERROR, status});
+                return { type: ERROR, status };
         }
-
-        localStorage.token = res.token;
-        dispatch({type: IS_FETCHING, isFetching: false});
     }
-}
+);
+
+export default signin;

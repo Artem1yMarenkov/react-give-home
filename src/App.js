@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { getAuth, getGlobal } from './redux/selectors';
-import { CHECK_AUTH } from './redux/actions/auth';
+import { checkAuth } from './redux/slices/auth';
 
 import Auth from './Pages/Auth/Auth'
 import Home from './Pages/Home/Home'
@@ -15,6 +15,7 @@ import NoMatch from './Pages/NoMatch/NoMatch';
 import Ad from './Pages/Ad/Ad';
 
 import Loading from './components/Loading/Loading';
+import Header from './components/Header/Header';
 
 import './App.scss';
 
@@ -25,7 +26,7 @@ function App() {
   const {isFetching} = useSelector(getGlobal);
 
   useEffect(() => {
-    dispatch({type: CHECK_AUTH})
+    dispatch(checkAuth());
   }, []);
 
   // Check Authenticition
@@ -35,6 +36,7 @@ function App() {
 
   return (
       <section className='app'>
+        <Header />
         {
           isFetching && <Loading isActive />
         }

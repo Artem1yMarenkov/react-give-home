@@ -9,7 +9,11 @@ const initialState = {
 export default function lastAdsReducer(state = initialState, action) {
     switch(action.type) {
         case ADD_MANY_LAST_ADS:
-            return {...state, lastAds: [...action.payload]}
+            const {payload} = action;
+            return {
+                ...state,
+                lastAds: payload ? [...payload] : []
+            }
         default:
             return state
     }

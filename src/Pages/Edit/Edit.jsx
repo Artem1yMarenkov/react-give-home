@@ -35,10 +35,6 @@ export default function Edit() {
   return (
       <>
         <div className="wrapper">
-          <header>
-            <Link to='/'> <img src={logo} alt=""></img> </Link>
-            <button className="wrapper__button-quit">Выйти</button>
-          </header>
           <div className="wrapper__div">Добавление записи</div>
           <div className="wrapper__main">
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
@@ -52,7 +48,6 @@ export default function Edit() {
                 </div>
               </div>
             </div>
-
             <form className="wrapper__description" onSubmit={(e) => handlerSubmit(e)}>
               <div className="wrapper__div2">О животном</div>
               <div className="wrapper__div3">Название / имя / кличка животного</div>

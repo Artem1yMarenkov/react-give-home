@@ -1,8 +1,6 @@
 import useTitle from '../../hooks/useTitle'
 import './Home.css'
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import logo from '../../img/logo.svg'
 import TabPanel from '../../components/Tabs/Tabs'
 import MyAds from '../../components/MyAds/MyAds'
 import LastAds from '../../components/LastAds/LastAds'
@@ -15,10 +13,6 @@ export default function Home() {
   }
   return (
     <div className="wrapper">
-      <header>
-        <img src={logo}></img>
-        <button className="header__button">Выйти</button>
-      </header>
       <section className="catalog">
         <div className="catalog-ads">
           <TabPanel tabs={tabs} />

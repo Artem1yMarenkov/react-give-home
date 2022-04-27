@@ -1,9 +1,17 @@
-import { CHECK_AUTH, SET_TOKEN } from "../actions/auth";
+import { CHECK_AUTH } from "../actions/auth";
+import { setToken } from "../slices/auth";
 
 export const authMiddleware = store => next => action => {
-    action.type !== CHECK_AUTH && next(action); 
+    if (action.type !== CHECK_AUTH) {
+        return next(action);
+    }
 
     const token = localStorage.token;
-    token && next({type: SET_TOKEN, token: token});
+    console.log(token);
+    
+    if (token) {
+        setToken(token);
+        return next(setToken("token"));
+    }
     next({type: ""});
 } 
