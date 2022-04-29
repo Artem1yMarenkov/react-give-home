@@ -6,14 +6,15 @@ import authReducer from "./slices/auth";
 import lastAdsReducer from "./reducers/lastAds";
 import myAdsReducer from "./reducers/myAds";
 import globalReducer from './reducers/global';
-import addNewReducer from './reducers/AddNew';
+import addNewSlice from './slices/AddNew'
+
 
 const store = configureStore({
     reducer: {
         auth: authReducer,
         myAds: myAdsReducer,
         lastAds: lastAdsReducer,
-        addnew: addNewReducer,
+        addNew: addNewSlice,
         global: globalReducer
     },
     middleware: (getDefaultMiddleware) => {

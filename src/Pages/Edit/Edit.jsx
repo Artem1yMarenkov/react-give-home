@@ -1,12 +1,10 @@
-import logo from '../../../src/img/logo.svg'
 import './Edit.css'
-import actionCreator from '../../redux/actions'
-import { ADD_ANIMAL } from '../../redux/actions/AddAnimal'
+import {ADD_ANIMAL} from '../../redux/actions/AddAnimal'
 import {useDispatch, useSelector} from 'react-redux'
-import { useInput } from '../../hooks/useInput'
-import { ERRORS_VALIDATE } from '../../vars/errorsValidate'
-import { fetchingDelete } from '../../fetching'
-import {Link} from "react-router-dom";
+import {useInput} from '../../hooks/useInput'
+import {ERRORS_VALIDATE} from '../../vars/errorsValidate'
+import {fetchingDelete} from '../../fetching'
+import {add_animal} from "../../redux/slices/AddNew";
 
 export default function Edit() {
 
@@ -25,11 +23,9 @@ export default function Edit() {
 
   function handlerSubmit(e) {
     e.preventDefault()
-    const animal = { title: title.value, description: description.value, phone: phone.value, address: address.value }
-    console.log(animal)
-    const action = actionCreator(ADD_ANIMAL)(animal)
-    dispatch(action)
-    fetchingDelete(action, init_value.id)
+    const animal = {type: ADD_ANIMAL, title: title.value, description: description.value, phone: phone.value, address: address.value}
+    dispatch(add_animal(animal))
+    fetchingDelete(animal, init_value.id)
   }
 
   return (
