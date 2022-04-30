@@ -21,7 +21,6 @@ export default function MyAds() {
         dispatch(deleteAdFetch(id));
     }
 
-
     const MappedDogs = () => {
         const handleClick = (id) => {
             setModalActive(true)

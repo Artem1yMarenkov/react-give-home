@@ -1,36 +1,31 @@
-import logo from '../../../src/img/logo.svg'
 import './Edit.css'
-import actionCreator from '../../redux/actions'
-import { ADD_ANIMAL } from '../../redux/actions/AddAnimal'
+import {ADD_ANIMAL} from '../../redux/actions/AddAnimal'
 import {useDispatch, useSelector} from 'react-redux'
-import { useInput } from '../../hooks/useInput'
-import { ERRORS_VALIDATE } from '../../vars/errorsValidate'
-import { fetchingDelete } from '../../fetching'
-import {Link} from "react-router-dom";
+import {useInput} from '../../hooks/useInput'
+import {ERRORS_VALIDATE} from '../../vars/errorsValidate'
+import {fetchingDelete} from '../../fetching'
+import {add_animal} from "../../redux/slices/AddNew";
 
 export default function Edit() {
 
   const init_value = useSelector(state => state.myAds.myAds[0]);
 
-  const init_title = init_value ? init_value.title : ''
-  const init_description = init_value ? init_value.description : ''
-  const init_phone = init_value ? init_value.phone : ''
-  const init_address = init_value ? init_value.address : ''
+  const init = (val) => {
+    return init_value ? init_value[val] : ''
+  }
 
   const dispatch = useDispatch()
 
-  const title = useInput(init_title, { isEmpty: true, minLength: 1 })
-  const description = useInput(init_description, { isEmpty: true, minLength: 1 })
-  const phone = useInput(init_phone, { isEmpty: true, minLength: 1 })
-  const address = useInput(init_address, { isEmpty: true, minLength: 1, isEmail: true })
+  const title = useInput(init('title'), { isEmpty: true, minLength: 1 })
+  const description = useInput(init('description'), { isEmpty: true, minLength: 1 })
+  const phone = useInput(init('phone'), { isEmpty: true, minLength: 1 })
+  const address = useInput(init('address'), { isEmpty: true, minLength: 1, isEmail: true })
 
   function handlerSubmit(e) {
     e.preventDefault()
-    const animal = { title: title.value, description: description.value, phone: phone.value, address: address.value }
-    console.log(animal)
-    const action = actionCreator(ADD_ANIMAL)(animal)
-    dispatch(action)
-    fetchingDelete(action, init_value.id)
+    const animal = {type: ADD_ANIMAL, title: title.value, description: description.value, phone: phone.value, address: address.value}
+    dispatch(add_animal(animal))
+    fetchingDelete(animal, init_value.id)
   }
 
   return (
