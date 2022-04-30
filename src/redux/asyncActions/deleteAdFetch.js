@@ -1,4 +1,4 @@
-import {deleteAd } from "../../redux/reducers/myAds";
+import { deleteAd } from "../slices/myAds";
 import { fetchMyAds } from "../../redux/asyncActions/myAdsArray";
 const token = localStorage.getItem('token')
 

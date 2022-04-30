@@ -1,4 +1,4 @@
-import { addManyAds } from "../reducers/lastAds";
+import { addManyLastAds } from "../slices/myAds";
 import { IS_FETCHING } from '../actions/global';
 import { SET_AUTH_ERROR } from "../actions/auth";
 
@@ -27,7 +27,7 @@ export const fetchLastAds = () => {
 
         switch (status) {
             case 200:
-                dispatch(addManyAds(rev))
+                dispatch(addManyLastAds(rev))
                 break;
             default:
                 const message = res?.message;

@@ -3,16 +3,14 @@ import { authMiddleware } from "./middleware/auth";
 import { authErrorMiddleware } from "./middleware/authError";
 
 import authReducer from "./slices/auth";
-import lastAdsReducer from "./reducers/lastAds";
-import myAdsReducer from "./reducers/myAds";
+import adsReducer from "./slices/myAds";
 import globalReducer from './reducers/global';
 import addNewReducer from './reducers/AddNew';
 
 const store = configureStore({
     reducer: {
         auth: authReducer,
-        myAds: myAdsReducer,
-        lastAds: lastAdsReducer,
+        ads: adsReducer,
         addnew: addNewReducer,
         global: globalReducer
     },

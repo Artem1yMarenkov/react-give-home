@@ -10,7 +10,7 @@ export default function LastAds() {
         dispatch(fetchLastAds());
     }, []);
     const dispatch = useDispatch();
-    const lastAds = useSelector(state => state.lastAds.lastAds);
+    const lastAds = useSelector(state => state.ads.lastAds);
     const MappedDogs = () => {
         return lastAds.map(({title, id, phone, address}) => 
             <div key={id} className="dog">

@@ -15,7 +15,7 @@ export default function MyAds() {
 
     const dispatch = useDispatch();
     const [modalActive, setModalActive] = useState(false);
-    const myAds = useSelector(state => state.myAds.myAds);
+    const myAds = useSelector(state => state.ads.myAds);
     const [id, setId] = useState('')
     const removeAd = () => {
         dispatch(deleteAdFetch(id));

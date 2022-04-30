@@ -1,6 +1,7 @@
 import { SET_AUTH_ERROR } from '../actions/auth';
 import { IS_FETCHING } from '../actions/global';
-import { addManyAds } from "../reducers/myAds";
+import { addManyMyAds } from '../slices/myAds';
+import { myAdsReducer } from '../slices/myAds';
 const token = localStorage.getItem('token')
 
 export const fetchMyAds = () => {
@@ -24,7 +25,7 @@ export const fetchMyAds = () => {
 
         switch (status) {
             case 200:
-                dispatch(addManyAds(res))
+                dispatch(addManyMyAds(res))
                 break;
             default:
                 break;
