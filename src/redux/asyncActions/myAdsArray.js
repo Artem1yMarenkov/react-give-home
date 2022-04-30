@@ -1,7 +1,6 @@
 import { SET_AUTH_ERROR } from '../actions/auth';
 import { IS_FETCHING } from '../actions/global';
 import { addManyMyAds } from '../slices/myAds';
-import { myAdsReducer } from '../slices/myAds';
 const token = localStorage.getItem('token')
 
 export const fetchMyAds = () => {
