@@ -15,9 +15,9 @@ const addNewSlice = createSlice({
             console.log(state)
             console.log(action)
             state.title = action.payload.title;
-                state.description = action.payload.description;
-                state.phone = action.payload.phone;
-                state.address = action.payload.address;
+            state.description = action.payload.description;
+            state.phone = action.payload.phone;
+            state.address = action.payload.address;
         }
     }
 })
